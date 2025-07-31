@@ -1,0 +1,132 @@
+@import url('https://fonts.googleapis.com/css2?family=Bad+Script&family=Edu+NSW+ACT+Hand+Pre:wght@400..700&family=Kapakana:wght@300..400&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Libertinus+Math&family=Manrope:wght@200..800&family=Monsieur+La+Doulaise&family=Permanent+Marker&family=Playwrite+AU+QLD:wght@100..400&family=Savate:ital,wght@0,200..900;1,200..900&family=Twinkle+Star&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Edu+NSW+ACT+Hand+Pre:wght@400..700&family=Kapakana:wght@300..400&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Libertinus+Math&family=Monsieur+La+Doulaise&family=Permanent+Marker&family=Savate:ital,wght@0,200..900;1,200..900&family=Twinkle+Star&display=swap');
+@import 'tailwindcss';
+@import './components/lightswind.css';
+
+:root {
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(11, 11, 11, 0.87);
+  background-color: #242424;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+span {
+  /* font-family: 'Bad Script', cursive; */
+  font-family: 'Twinkle Star', cursive;
+}
+h1 {
+  font-family: 'Bad Script', cursive;
+}
+
+h2 {
+  font-family: 'Slabo 27px', cursive;
+}
+
+body {
+  margin: 0;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #213547;
+    background-color: #101010;
+  }
+  a:hover {
+    color: #747bff;
+  }
+  button {
+    background-color: #f9f9f9;
+  }
+}
+@layer base {
+  @font-face {
+    font-family: 'Exo 2';
+    src: url('/fonts/Exo2-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+  }
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes smoke {
+  0% {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  50% {
+    opacity: 0.8;
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.5);
+  }
+}
+
+.fade-in {
+  animation: fade-in 1.5s ease-out;
+}
+
+.float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.smoke {
+  animation: smoke 4s linear infinite;
+}
+.scroll-container {
+  scroll-behavior: smooth;
+}
+.neumorphism-button {
+  background: #eaecf0bb;
+  border-radius: 20px;
+  box-shadow: 1px 1px 20px #a3b1c6b5, -1px -1px 20px #ffffff8d;
+  color: black;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.neumorphism-button:hover {
+  box-shadow: inset 8px 8px 20px #a3b1c6, inset -13px -13px 20px #e9e1e1;
+}
+
+.neumorphism-fact {
+  background: #f2f194db;
+  border-radius: 20px;
+  box-shadow: 1px 1px 20px #a3b1c6b5, -1px -1px 20px #ffffff8d;
+  color: black;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.neumorphism-fact:hover {
+  box-shadow: inset 8px 8px 20px #a3b1c6, inset -13px -13px 20px #e9e1e1;
+}
