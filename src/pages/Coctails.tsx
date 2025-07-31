@@ -4,7 +4,7 @@ import { TypingText } from "../components/lightswind/typingText";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import fon_hook from '../assets/fon_hook.png';
-import video from '../assets/video/IMG_5953.mp4';
+import video from '../assets/IMG_5953.mp4';
 
 export default function Cocktails() {
     const navigate = useNavigate();
