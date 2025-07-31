@@ -1,32 +1,32 @@
-// Lemonades.tsx
+
 
 import { useNavigate } from "react-router-dom";
 import { CountGroup } from "../components/lightswind/countGroup";
 import { ArrowLeft } from "lucide-react";
 
 export default function Lemonades() {
-    const navigate = useNavigate(); // Используем useNavigate для навигации
+    const navigate = useNavigate();
 
     const lemonades = [
         {
             name: "Мохито",
             description: "Освежающий лимонад с лаймом и легкой сладостью",
-            price: 300,
+            price: 350,
         },
         {
             name: "Лимонад Клубника",
             description: "Натуральный, тонизирующий лимонад из клубники.",
-            price: 350,
+            price: 400,
         },
         {
             name: "Лимонад Ягодный",
             description: "Густой напиток с добавлением лесных ягод и лимона.",
-            price: 350,
+            price: 400,
         },
         {
             name: "Лимонад Манго-Маракуя",
             description: "Экзотический лимонад с насыщенным вкусом манго и маракуи, освежающий и ароматный.",
-            price: 350,
+            price: 400,
         },
     ];
 
@@ -63,7 +63,7 @@ export default function Lemonades() {
                 className="text-[#a4a0ab] cursor-pointer flex items-center hover:underline relative group mt-4"
             >
                 <ArrowLeft className="ml-2 w-4 h-4 relative z-10 transition-transform group-hover:translate-x-1" />
-                <span className="relative z-10 text-xl ml-2">вернуться обратно</span>
+                <span className="relative z-10  ml-2 text-[22px]">вернуться обратно</span>
 
                 <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-gray-500 transition-all duration-300 group-hover:w-full"></span>
             </button>

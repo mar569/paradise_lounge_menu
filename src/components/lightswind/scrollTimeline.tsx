@@ -38,7 +38,7 @@ export const ScrollTimeline = ({
     events = DEFAULT_EVENTS,
     title = "Timeline",
     subtitle = "Scroll to explore the journey",
-    animationOrder = "sequential",
+    animationOrder = "staggered",
     cardAlignment = "alternating",
     lineColor = "bg-primary/30",
     activeColor = "border-primary",
@@ -203,7 +203,7 @@ export const ScrollTimeline = ({
                 className
             )}
         >
-            <div className="text-center py-16 px-4">
+            <div className="text-center py-8 px-4">
                 <h2 className="text-3xl md:text-5xl font-bold mb-4">{title}</h2>
                 <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
                     {subtitle}
@@ -346,7 +346,7 @@ export const ScrollTimeline = ({
                                                 <p className="text-muted-foreground mb-4">
                                                     {event.description}
                                                 </p>
-                                                <div className="h-[0.08px] bg-[#902bf4] mb-4"></div>
+                                                <div className="h-[1px] bg-[#902bf4] mb-4"></div>
                                                 <div className="flex items-end">
                                                     <p className="font-bold text-xl text-[#f3f1d7] ">
                                                         {event.price}
