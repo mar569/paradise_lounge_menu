@@ -27,7 +27,7 @@ export default function Cocktails() {
     ];
 
     return (
-        <div className="relative p-4 md:p-8 overflow-hidden min-h-screen">
+        <div className="relative p-4 md:p-6 overflow-hidden min-h-screen">
             <div className="absolute left-0 top-0 h-full w-auto" style={{ width: '50%', height: '100vh', overflow: 'hidden' }}>
                 <img
                     src={fon_hook}

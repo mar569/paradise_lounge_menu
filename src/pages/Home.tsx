@@ -14,7 +14,7 @@ const categories: Carousel3DItem[] = [
         title: "",
         brand: "Паровые Коктейли",
         description: "Дым и вкус — идеальное сочетание",
-        tags: ["Вкусные комбинации", "Микс под настроение"],
+        tags: ["Дымно", "Миксы под настроение"],
         imageUrl: hookah,
         link: "/cocktails",
     },
@@ -65,7 +65,7 @@ export default function Home() {
                     transition={{ duration: 0.8 }}
                     className="text-center mb-12"
                 >
-                    <h1 className="text-4xl md:text-5xl font-bold mb-4">
+                    <h1 className="text-4xl md:text-5xl font-bold mb-2">
                         Добро пожаловать в <span className="text-[34px] md:text-[40px] text-[#c9f5f3]">Paradise Lounge!</span>
                     </h1>
                     <p className="text-xl text-gray-300 max-w-2xl mx-auto">

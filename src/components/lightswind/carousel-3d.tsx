@@ -135,7 +135,7 @@ const Carousel3D = ({
                         {item.tags.map((tag, idx) => (
                           <span
                             key={idx}
-                            className="px-2 py-1 text-[16px] bg-gray-50 text-gray-600 rounded-full text-xs animate-pulse-slow"
+                            className="px-2 py-1 text-[16px] bg-gray-50 text-gray-600 rounded-full animate-pulse-slow"
                           >
                             {tag}
                           </span>
@@ -181,7 +181,7 @@ const Carousel3D = ({
             </>
           )}
 
-          <div className="absolute  bottom-0 left-0 right-0 flex justify-center items-center space-x-3 z-30">
+          <div className="absolute bottom-0 left-0 right-0 flex justify-center items-center space-x-3 z-30">
             {items.map((_, idx) => (
               <button
                 key={idx}
