@@ -135,7 +135,8 @@ const Carousel3D = ({
                         {item.tags.map((tag, idx) => (
                           <span
                             key={idx}
-                            className="px-2 py-1 text-[16px] bg-gray-50 text-gray-600 rounded-full animate-pulse-slow"
+                            className="px-2 py-1 text-[18px] bg-gray-50 text-gray-600 rounded-full animate-pulse-slow"
+                            style={{ fontFamily: "'Nunito', sans-serif" }}
                           >
                             {tag}
                           </span>
