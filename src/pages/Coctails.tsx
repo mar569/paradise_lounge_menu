@@ -55,7 +55,11 @@ export default function Cocktails() {
             </TypingText>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 z-20 relative bg-hookah-purple rounded-lg p-4">
                 {cocktails.map((cocktail, index) => (
-                    <div key={index} className="bg-hookah-purple rounded-lg p-4 shadow-lg hover:scale-105 transition-transform duration-300 z-20 relative">
+                    <div key={index}
+                        className="bg-hookah-purple rounded-lg p-4 hover:scale-105 transition-transform duration-300 z-20 relative"
+                        style={{
+                            boxShadow: '0 25px 50px -12px rgba(33, 33, 33, 1)',
+                        }}>
                         <h2 className="text-[22px] font-semibold text-white mb-2">{cocktail.name}</h2>
                         <p className="text-white text-[18px]">{cocktail.description}</p>
                     </div>
@@ -140,6 +144,6 @@ export default function Cocktails() {
                     <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-gray-500 transition-all duration-300 group-hover:w-full"></span>
                 </button>
             </div>
-        </div>
+        </div >
     );
 }

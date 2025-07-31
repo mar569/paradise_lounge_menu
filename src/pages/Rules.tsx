@@ -22,7 +22,8 @@ export default function Rules() {
     return (
         <div className="p-8 text-white rounded-lg shadow-lg max-w-2xl mx-auto">
             <h1 className="text-4xl font-bold mb-6 text-center">Наши Правила (или как не испортить атмосферу)</h1>
-            <div className="flex flex-col gap-4">
+            <div className="flex flex-col gap-4"
+            >
                 {rules.map((rule, index) => (
                     <div key={index}>
                         {renderItem(rule)}

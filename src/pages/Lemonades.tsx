@@ -35,7 +35,10 @@ export default function Lemonades() {
             <h2 className="text-[36px] text-center font-bold mb-4 text-[#f3f1d7]">Лимонады</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {lemonades.map((lemonade, index) => (
-                    <div key={index} className="rounded-lg p-4 shadow-2xl">
+                    <div key={index} className="rounded-lg p-4 "
+                        style={{
+                            boxShadow: '0 25px 50px -12px rgba(33, 33, 33, 1)',
+                        }}>
                         <h2 className="text-xl font-medium text-[#d7d3a1]"
                             style={{ fontFamily: "font-serif" }}>{lemonade.name}</h2>
                         <div className="text-[#c4c4c4] font-extralight pt-2">{lemonade.description}</div>
@@ -63,7 +66,7 @@ export default function Lemonades() {
                 className="text-[#a4a0ab] cursor-pointer flex items-center hover:underline relative group mt-4"
             >
                 <ArrowLeft className="ml-2 w-4 h-4 relative z-10 transition-transform group-hover:translate-x-1" />
-                <span className="relative z-10  ml-2 text-[22px]">вернуться обратно</span>
+                <span className="relative z-10 ml-2 text-[22px]">вернуться обратно</span>
 
                 <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-gray-500 transition-all duration-300 group-hover:w-full"></span>
             </button>

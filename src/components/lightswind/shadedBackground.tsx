@@ -35,7 +35,7 @@ void mainImage(out vec4 fragColor, in vec2 fragCoord) {
   float wave = abs(sin(t - uv.y - uv.x + mouseInfluence * 5.0));
   float glow = smoothstep(0.8, 0.0, wave) * 0.7; 
   
-  vec3 color = glow * u_color * 0.8; 
+  vec3 color = glow * u_color * 0.8 * 0.5; 
   
   fragColor = vec4(color, 0.8); 
 }
