@@ -35,7 +35,7 @@ const ParticleOrbitEffect: React.FC<ParticleOrbitEffectProps> = ({
     style,
     particleCount = 25,
     radius = 60,
-    particleSpeed = 0.015,
+    particleSpeed = 0.045,
     radiusScale = 1.1,
     intensity = 1,
     fadeOpacity = 0.09,
