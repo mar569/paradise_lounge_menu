@@ -60,7 +60,8 @@ export default function Cocktails() {
                         style={{
                             boxShadow: '0 25px 50px -12px rgba(33, 33, 33, 1)',
                         }}>
-                        <h2 className="text-[22px] font-semibold text-white mb-2">{cocktail.name}</h2>
+                        <h3 className="text-[22px] font-semibold text-white mb-2"
+                            style={{ fontFamily: 'Roboto', fontWeight: 'bold' }}>{cocktail.name}</h3>
                         <p className="text-white text-[18px]">{cocktail.description}</p>
                     </div>
                 ))}
@@ -82,7 +83,7 @@ export default function Cocktails() {
                         </>
                     ) : (
                         <>
-                            <span className="mr-2 text-3xl">✨</span>
+                            <span className="mr-2 text-[32px]">✨</span>
                         </>
                     )}
                 </button>
