@@ -1,8 +1,13 @@
+import { AnimatePresence, motion } from "framer-motion";
 import { ArrowLeft } from "lucide-react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 export default function Rules() {
     const navigate = useNavigate();
+    const [openFine, setOpenFine] = useState(false);
+
+
     const rules = [
         "🚭 Не курим сигареты внутри — даже если очень хочется, у нас есть специальные места для этого.",
         "🤝 Уважайте других гостей и кальянного мастера — они тоже пришли расслабиться, а не спорить о том, кто лучше курит.",
@@ -30,15 +35,42 @@ export default function Rules() {
                     </div>
                 ))}
             </div>
-            <button
-                onClick={() => navigate("/")}
-                className="mt-6 left-4 text-[#a4a0ab] cursor-pointer flex items-center hover:underline group" // Добавлен отступ снизу
-            >
-                <ArrowLeft className="w-4 h-4 relative z-10 transition-transform group-hover:translate-x-1" />
-                <span className="relative z-10 text-[22px] ml-2">вернуться обратно</span>
+            <div className="flex justify-between">
+                <button
+                    onClick={() => navigate("/")}
+                    className="mt-6 left-4 text-[#a4a0ab] cursor-pointer flex items-center hover:underline group"
+                >
+                    <ArrowLeft className="w-5 h-5 relative z-10 transition-transform group-hover:translate-x-1" />
+                    <span className="relative z-10 text-[24px] ml-2"
+                        style={{ fontFamily: 'Sofia', fontWeight: 'bold' }}>вернуться обратно</span>
 
-                <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-gray-500 transition-all duration-300 group-hover:w-full"></span>
-            </button>
+                    <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-gray-500 transition-all duration-300 group-hover:w-full"></span>
+                </button>
+                <div onClick={() => setOpenFine(!openFine)}>
+                    <button className="mt-6 right-4 text-[#a4a0ab] border border-[#2c2c2c] rounded-lg px-2 py-1 cursor-pointer flex items-center hover:underline">Штрафы</button>
+                </div>
+                <AnimatePresence>
+                    {openFine && (
+                        <div className="fixed inset-0 flex items-center justify-center bg-black/90  p-6">
+                            <motion.div
+                                className="bg-[#0b0b0b] rounded-lg p-6 shadow-xl max-w-md w-full border-1 border-amber-50"
+                                initial={{ opacity: 0, scale: 0.8 }}
+                                animate={{ opacity: 1, scale: 1 }}
+                                exit={{ opacity: 0, scale: 0.8, x: '-100%' }}
+                                transition={{ duration: 0.9 }}
+                            >
+
+                                <ul className="text-[#f0eeee] list-disc pl-6 space-y-2 text-[18px]">
+                                    <li>За разбитую колбу - 1500 ₽.</li>
+                                    <li>За разбитую чашу - 700 ₽.</li>
+                                    <li>Прожег диван? - по стоимости ремонта.</li>
+                                </ul>
+                                <span className="absolute top-[34%] right-[45%] text-[40px] cursor-pointer" onClick={() => setOpenFine(false)}>&times;</span>
+                            </motion.div>
+                        </div>
+                    )}
+                </AnimatePresence>
+            </div>
         </div>
     );
 }

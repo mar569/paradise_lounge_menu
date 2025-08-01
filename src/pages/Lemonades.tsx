@@ -39,7 +39,7 @@ export default function Lemonades() {
                         style={{
                             boxShadow: '0 25px 50px -12px rgba(33, 33, 33, 1)',
                         }}>
-                        <h2 className="text-xl font-medium text-[#d7d3a1]"
+                        <h2 className="text-[22px] font-medium text-[#d7d3a1]"
                             style={{ fontFamily: "font-serif" }}>{lemonade.name}</h2>
                         <div className="text-[#c4c4c4] font-extralight pt-2">{lemonade.description}</div>
                         <div className="flex items-center gap-6 pt-2">
@@ -54,7 +54,7 @@ export default function Lemonades() {
                                 fontFamily="font-serif"
                                 animationStyle="bounce"
                                 easing="easeInOut"
-                                className="text-lg font-bold"
+                                className="text-[20px] font-bold"
                             />
                         </div>
 
@@ -65,8 +65,9 @@ export default function Lemonades() {
                 onClick={() => navigate("/")}
                 className="text-[#a4a0ab] cursor-pointer flex items-center hover:underline relative group mt-4"
             >
-                <ArrowLeft className="ml-2 w-4 h-4 relative z-10 transition-transform group-hover:translate-x-1" />
-                <span className="relative z-10 ml-2 text-[22px]">вернуться обратно</span>
+                <ArrowLeft className="w-5 h-5 relative z-10 transition-transform group-hover:translate-x-1" />
+                <span className="relative z-10 text-[24px] ml-2"
+                    style={{ fontFamily: 'Sofia', fontWeight: 'bold' }}>вернуться обратно</span>
 
                 <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-gray-500 transition-all duration-300 group-hover:w-full"></span>
             </button>

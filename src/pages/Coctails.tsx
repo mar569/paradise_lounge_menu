@@ -38,21 +38,21 @@ export default function Cocktails() {
                 <div className="absolute inset-0 bg-gradient-to-r from-transparent to-[#00211a1b] opacity-5" />
             </div>
             <div className="flex w-full max-w-[1200px] mx-auto justify-center z-20 mt-2 relative">
-                <h1 className="text-3xl font-bold mb-4 text-white">Паровые Коктейли</h1>
+                <h1 className="text-[32px] font-bold mb-4 text-white">Паровые Коктейли</h1>
             </div>
             <TypingText
                 className="mb-6 text-lg text-[#f3f1d7] text-center z-20 relative"
-                style={{ fontFamily: 'Roboto, sans-serif' }}
                 delay={0.5}
                 duration={1.5}
-                fontSize="text-[22px]"
+                fontSize="text-[25px]"
                 fontWeight="font-bold"
                 color="text-[#f3f1d7]"
                 letterSpacing="tracking-wide"
                 align="center"
             >
-                Погрузись в мир ароматных паровых коктейлей, созданных из лучших табаков: <br /> Darkside, Blackburn, Sebero, Duft, MustHave, Trofimoff. <br /> Цена за уникальный опыт — 1000 ₽.
+                Погрузись в мир ароматных паровых коктейлей, созданных из лучших табаков:  Darkside, Blackburn, Sebero, Duft, MustHave, Trofimoff. <br /> Цена за уникальный опыт — 1000 ₽.
             </TypingText>
+
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 z-20 relative bg-hookah-purple rounded-lg p-4">
                 {cocktails.map((cocktail, index) => (
                     <div key={index}
@@ -82,7 +82,7 @@ export default function Cocktails() {
                         </>
                     ) : (
                         <>
-                            <span className="mr-2 text-2xl">✨</span>
+                            <span className="mr-2 text-3xl">✨</span>
                         </>
                     )}
                 </button>
@@ -139,8 +139,9 @@ export default function Cocktails() {
                     onClick={() => navigate("/")}
                     className="absolute bottom-6 left-4 text-[#a4a0ab] cursor-pointer flex items-center hover:underline group z-20"
                 >
-                    <ArrowLeft className="w-4 h-4 relative z-10 transition-transform group-hover:translate-x-1" />
-                    <span className="relative z-10 text-[22px] ml-2">вернуться обратно</span>
+                    <ArrowLeft className="w-5 h-5 relative z-10 transition-transform group-hover:translate-x-1" />
+                    <span className="relative z-10 text-[24px] ml-2"
+                        style={{ fontFamily: 'Sofia', fontWeight: 'bold' }}>вернуться обратно</span>
                     <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-gray-500 transition-all duration-300 group-hover:w-full"></span>
                 </button>
             </div>

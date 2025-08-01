@@ -30,7 +30,7 @@ export const TypingText = ({
     className = "",
     delay = 0,
     duration = 2,
-    fontSize = "text-4xl",
+    fontSize = "text-3xl",
     fontWeight = "font-bold",
     color = "text-white",
     letterSpacing = "tracking-wide",
@@ -48,7 +48,7 @@ export const TypingText = ({
                 return node.map(extractText).join("");
             }
             if (React.isValidElement(node)) {
-                const element = node as React.ReactElement<{ children?: ReactNode }>; // Явное приведение типа
+                const element = node as React.ReactElement<{ children?: ReactNode }>;
                 return extractText(element.props.children);
             }
             return "";
@@ -57,7 +57,6 @@ export const TypingText = ({
         setTextContent(extractText(children));
     }, [children]);
 
-    // Разбиваем текст на слова
     const words = textContent.split(" ").map((word, index) => ({
         word,
         index,
@@ -91,7 +90,7 @@ export const TypingText = ({
                         ? "justify-end text-right"
                         : "justify-start text-left"
             )}
-            style={style}
+            style={{ ...style, fontFamily: 'Roboto, sans-serif' }} // Ensure Roboto is applied
         >
             <motion.span
                 className="inline-block"
