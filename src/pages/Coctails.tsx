@@ -99,7 +99,8 @@ export default function Cocktails() {
                             exit={{ opacity: 0, scale: 0.8, x: '-100%' }}
                             transition={{ duration: 0.9 }}
                         >
-                            <h2 className="text-xl font-semibold mb-2 text-[#e2f8f5]">Интересный факт</h2>
+                            <h4 className="text-xl font-semibold mb-2 text-[#e2f8f5]"
+                                style={{ fontFamily: 'Roboto', fontWeight: 'bold' }}>Интересный факт</h4>
                             <p className="text-[#181e1d] text-[18px]"
                                 style={{ textShadow: '2px 2px 4px rgba(0, 0, 0, 0.1)' }}>
                                 А знаешь? Паровые коктейли — это современное искусство, сочетающее традиционные табачные смеси с инновационными методами подачи. Они создают уникальную атмосферу релакса и вдохновения, а использование премиальных табаков делает каждую затяжку особенной!

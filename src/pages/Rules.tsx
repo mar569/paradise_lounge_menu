@@ -60,12 +60,18 @@ export default function Rules() {
                                 transition={{ duration: 0.9 }}
                             >
 
-                                <ul className="text-[#f0eeee] list-disc pl-6 space-y-2 text-[18px]">
+                                <ul className="text-[#f0eeee] list-disc pl-6 space-y-2 text-[20px]">
                                     <li>За разбитую колбу - 1500 ₽.</li>
                                     <li>За разбитую чашу - 700 ₽.</li>
                                     <li>Прожег диван? - по стоимости ремонта.</li>
                                 </ul>
-                                <span className="absolute top-[34%] right-[45%] text-[40px] cursor-pointer" onClick={() => setOpenFine(false)}>&times;</span>
+                                <div className="flex float-right">
+                                    <button
+                                        onClick={() => setOpenFine(false)}
+                                        className=" neumorphism-button">
+                                        Свернуть
+                                    </button>
+                                </div>
                             </motion.div>
                         </div>
                     )}
