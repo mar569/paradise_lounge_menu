@@ -1,4 +1,4 @@
-// lightswind/scrollTimeline.tsx
+
 
 import { useState, useEffect, useRef } from "react";
 import {
@@ -48,7 +48,7 @@ export const ScrollTimeline = ({
     parallaxIntensity = 0.2,
     progressLineWidth = 2,
     progressLineCap = "round",
-    revealAnimation = "fade",
+    revealAnimation = "scale",
     className = "",
     connectorStyle = "dots",
     perspective = false,
