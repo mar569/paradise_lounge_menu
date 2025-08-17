@@ -1,12 +1,13 @@
-import { useEffect } from 'react';
+// src/pages/Home.tsx
+import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { toast } from 'react-toastify';
-import type { Carousel3DItem } from '../components/lightswind/carousel-3d';
-import Carousel3D from '../components/lightswind/carousel-3d';
+import Carousel3D, { type Carousel3DItem } from '../components/lightswind/carousel-3d';
 import hookah from '../assets/hookah.png';
-import tea from '../assets/tea.png'
+import tea from '../assets/tea.png';
 import coctails from '../assets/coctails.png';
-import paradise from '../assets/par.png'
+import paradise from '../assets/par.png';
+import HamburgerMenuOverlay from '../components/lightswind/HamburgerMenuOverlay';
+
 
 const categories: Carousel3DItem[] = [
     {
@@ -23,7 +24,7 @@ const categories: Carousel3DItem[] = [
         title: "",
         brand: "Чайный микс",
         description: "Настоящий чай для настоящих ценителей",
-        tags: ["Ароматные", "Микс для гурманов",],
+        tags: ["Ароматные", "Микс для гурманов"],
         imageUrl: tea,
         link: "/teas",
     },
@@ -32,7 +33,7 @@ const categories: Carousel3DItem[] = [
         title: "",
         brand: "Лимонады",
         description: "Свежесть в каждом глотке",
-        tags: ["Лимонад", "Фрукты", "Основы",],
+        tags: ["Лимонад", "Фрукты", "Основы"],
         imageUrl: coctails,
         link: "/lemonades",
     },
@@ -48,17 +49,25 @@ const categories: Carousel3DItem[] = [
 ];
 
 export default function Home() {
-    useEffect(() => {
-        toast.success("Добро пожаловать в мир изысканных вкусов!", {
-            position: "bottom-right",
-            autoClose: 3000,
-            hideProgressBar: true,
-        });
-    }, []);
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+    const menuItems = [
+        {
+            label: "Профиль",
+        },
+    ];
 
     return (
         <div className="relative overflow-hidden min-h-screen">
-            <div className="container mx-auto px-4 py-8 relative z-10 min-h-screen">
+            <div className='absolute top-0 left-0 w-full h-full'>
+                <HamburgerMenuOverlay
+                    items={menuItems}
+                    isOpen={isMenuOpen}
+                    onRequestClose={() => setIsMenuOpen(false)}
+                />
+
+            </div>
+            <div className="container mx-auto px-4 py-8 pt-10 relative z-10 min-h-screen">
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -71,8 +80,9 @@ export default function Home() {
                     <p className="text-xl text-gray-300 max-w-2xl mx-auto">
                         Погрузись в атмосферу уюта и насладись нашими вкусными миксами
                     </p>
-                </motion.div>
 
+
+                </motion.div>
                 <Carousel3D items={categories} />
             </div>
         </div>

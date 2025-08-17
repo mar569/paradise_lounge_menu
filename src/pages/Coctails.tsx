@@ -22,7 +22,7 @@ export default function Cocktails() {
         },
         {
             name: "Trofimoff",
-            description: "Уникальный табак Tofimoff имеет древесные ноты, насыщенный вкус. Тот кто любит покрепче.",
+            description: "Уникальный табак Trofimoff имеет древесные ноты, насыщенный вкус. Тот кто любит покрепче.",
         },
     ];
 

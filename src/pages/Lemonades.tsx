@@ -1,5 +1,4 @@
-
-
+// src/pages/Lemonades.tsx
 import { useNavigate } from "react-router-dom";
 import { CountGroup } from "../components/lightswind/countGroup";
 import { ArrowLeft } from "lucide-react";
