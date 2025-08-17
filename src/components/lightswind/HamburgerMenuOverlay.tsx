@@ -13,6 +13,8 @@ export interface MenuItem {
 
 export interface HamburgerMenuOverlayProps {
   items: MenuItem[];
+  isOpen: boolean; // Add this line
+  onRequestClose: () => void; // Add this line
   buttonTop: string;
   buttonLeft: string;
   buttonSize: "sm" | "md" | "lg";
@@ -36,7 +38,6 @@ export interface HamburgerMenuOverlayProps {
   menuDirection: "vertical" | "horizontal";
   enableBlur: boolean;
   zIndex: number;
-
 }
 
 export const HamburgerMenuOverlay: React.FC<HamburgerMenuOverlayProps> = ({

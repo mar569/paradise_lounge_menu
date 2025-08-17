@@ -50,7 +50,7 @@ interface DialogTriggerProps {
     asChild?: boolean;
 }
 const DialogTrigger = React.forwardRef<HTMLDivElement, DialogTriggerProps & React.HTMLAttributes<HTMLDivElement>>(
-    ({ children, asChild = false, ...props }, ref) => {
+    ({ children, asChild = false, onClick, ...props }, ref) => {
         const context = React.useContext(DialogContext);
         if (!context) {
             throw new Error("DialogTrigger must be used within a Dialog");
@@ -63,20 +63,17 @@ const DialogTrigger = React.forwardRef<HTMLDivElement, DialogTriggerProps & Reac
             setOpen(true);
 
             // Call the original onClick if it exists
-            if (props.onClick) {
-                props.onClick(e); // Use the onClick prop here
+            if (onClick) {
+                onClick(e); // Use the onClick prop here
             }
         };
-
-        // Remove onClick from props to avoid duplicate handlers
-        const { onClick, ...otherProps } = props;
 
         if (asChild) {
             return (
                 <div
                     ref={ref}
                     onClick={handleClick}
-                    {...otherProps}
+                    {...props} // Spread the remaining props
                 >
                     {React.Children.map(children, (child) => {
                         if (React.isValidElement(child)) {
@@ -94,7 +91,7 @@ const DialogTrigger = React.forwardRef<HTMLDivElement, DialogTriggerProps & Reac
             <div
                 ref={ref}
                 onClick={handleClick}
-                {...otherProps}
+                {...props} // Spread the remaining props
             >
                 {children}
             </div>
@@ -102,6 +99,8 @@ const DialogTrigger = React.forwardRef<HTMLDivElement, DialogTriggerProps & Reac
     }
 );
 DialogTrigger.displayName = "DialogTrigger";
+
+
 
 
 // Define a type that omits conflicting HTML attributes for Framer Motion
