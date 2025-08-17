@@ -33,10 +33,10 @@ const NotAuth: React.FC = () => {
     };
 
     return (
-        <div className="flex flex-col justify-center items-center min-h-screen bg-gray-100 p-4">
-            <div className="bg-white p-8 rounded-lg shadow-lg text-center max-w-md">
-                <h1 className="text-2xl font-bold text-red-600 mb-4">Требуется подтверждение email</h1>
-                <p className="text-gray-700 mb-6">
+        <div className="flex flex-col justify-center items-center min-h-screen  p-4">
+            <div className="bg-transparent shadow-amber-50 p-8 rounded-xl shadow-md text-center max-w-md">
+                <h1 className="text-2xl font-bold text-[#fb5454] mb-4">Требуется подтверждение email</h1>
+                <p className="text-[#ffffff] mb-6">
                     Вы зарегистрированы, но не подтвердили свой email. Пожалуйста, проверьте вашу почту и перейдите по ссылке для подтверждения.
                 </p>
                 <div className="space-y-3">

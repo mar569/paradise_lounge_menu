@@ -151,7 +151,7 @@ const RegisterForm: React.FC<RegisterFormProps> = ({ onSwitchMode, onRegistratio
 
                 <div className="field">
                     <label>
-                        <input type="checkbox" {...register('isAdmin')} />
+                        <input type="checkbox" {...register('isAdmin')} className='mr-2' />
                         Я администратор
                     </label>
                 </div>
