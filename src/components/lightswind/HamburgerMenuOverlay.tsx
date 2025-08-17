@@ -36,6 +36,7 @@ export interface HamburgerMenuOverlayProps {
   menuDirection: "vertical" | "horizontal";
   enableBlur: boolean;
   zIndex: number;
+
 }
 
 export const HamburgerMenuOverlay: React.FC<HamburgerMenuOverlayProps> = ({
