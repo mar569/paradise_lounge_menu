@@ -78,7 +78,8 @@ const ProfileHeader: React.FC<ProfileHeaderProps> = ({
                     </button>
                 </DialogTrigger>
                 <DialogContent>
-                    <DialogTitle className='text-[#fff] mb-4'>Редактировать профиль</DialogTitle>
+                    <DialogTitle className='text-[#fff] text-[20px] mb-4'
+                        style={{ fontFamily: 'monospace', fontWeight: 'bold' }}>Редактировать профиль</DialogTitle>
                     <DialogDescription>
                         <div className="mb-4">
                             <label className="block text-sm font-medium text-[#dcdada]">Имя</label>

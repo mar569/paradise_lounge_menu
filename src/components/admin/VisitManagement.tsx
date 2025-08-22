@@ -13,6 +13,7 @@ const VisitManagement: React.FC<VisitManagementProps> = React.memo(({ handleAddV
             <button
                 onClick={handleAddVisit}
                 className="cursor-pointer w-full py-2 bg-[#379461] text-[#fff] rounded hover:bg-[#175530] disabled:opacity-50"
+                style={{ fontFamily: 'monospace', fontWeight: 'bold' }}
                 disabled={!foundUser}
             >
                 Добавить посещение

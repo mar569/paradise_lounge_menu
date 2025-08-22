@@ -7,13 +7,13 @@ interface UserSearchProps {
     userIdInput: string;
     setUserIdInput: (value: string) => void;
     onFindUser: () => void;
-    foundUser: User | null; // Добавлено свойство foundUser 
+    foundUser: User | null;
 }
 
 const UserSearch: React.FC<UserSearchProps> = React.memo(({ userIdInput, setUserIdInput, onFindUser, foundUser }) => {
     return (
         <div className="bg-transparent border-1 border-[#394d3e] p-4 rounded-lg">
-            <h2 className="text-xl font-semibold text-white mb-4">Поиск пользователя</h2>
+            <h4 className="text-xl font-semibold text-white mb-4">Поиск пользователя</h4>
             <div className="flex gap-2 mb-4">
                 <input
                     type="text"
