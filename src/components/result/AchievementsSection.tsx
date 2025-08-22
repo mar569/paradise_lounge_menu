@@ -37,9 +37,10 @@ const AchievementsSection: React.FC<AchievementsSectionProps> = ({
                     animate={{ opacity: 1, height: 'auto' }}
                     exit={{ opacity: 0, height: 0 }}
                     transition={{ duration: 0.9 }}
-                    style={{ padding: '20px 0 20px 0' }}
+                    style={{ padding: '16px 0 16px 0' }}
                 >
-                    <div className="mt-4 gradient-border p-6">
+                    <div className="mt-4 border-1 border-[#7bc0a6] rounded-2xl "
+                        style={{ padding: '16px 16px 16px 16px' }}>
                         <div className='mb-4'>
                             <p className="text-gray-300 text-[16px] ">
                                 Разблокируйте все свои достижения и зарабатывайте бонусные баллы
