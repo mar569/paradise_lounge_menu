@@ -28,20 +28,20 @@ const VisitsHistory: React.FC<VisitsHistoryProps> = React.memo(({
 
     return (
         <motion.div
-            className="mt-4 flex flex-col gradient-border py-8 px-4"
+            className="mt-4 flex flex-col gradient-border "
             initial={{ x: 100, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
             exit={{ x: 100, opacity: 0 }}
             transition={{ duration: 0.5 }}
         >
-            <div className='mb-4'>
+            <div className='mb-4 p-4 ml-2'>
                 <h4 className='text-md text-[#fff] font-semibold'>Твои баллы: {cashback} ₽</h4>
                 <p className='text-xl mt-1'>
                     {calculateCashbackPercentage(visitsHistory.length)}%
                     <span className='text-xs' style={{ color: '#76c7c0', fontFamily: 'monospace' }}> CASHBACK</span>
                 </p>
             </div>
-            <div className="flex-1">
+            <div className="flex-1 p-4">
                 <div className="mt-4 flex justify-between items-end gradient-border px-2 py-3">
                     <div>
                         <div className='flex items-end'>

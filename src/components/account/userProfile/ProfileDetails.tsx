@@ -27,7 +27,8 @@ const ProfileDetails: React.FC<ProfileDetailsProps> = ({ userData }) => {
             </div>
 
             <div className="flex-1">
-                <h2 className="text-xl text-[#fff] font-semibold">{userData?.name}</h2>
+                <h2 className="text-xl text-[#fff] font-semibold"
+                    style={{ fontFamily: 'Sofia', fontWeight: 'bold' }}>{userData?.name}</h2>
                 <p className="text-gray-500 mt-1">{userData?.email}</p>
                 <p className="text-gray-500">ID: {userData?.userId}</p>
             </div>

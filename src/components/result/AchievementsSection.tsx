@@ -32,11 +32,12 @@ const AchievementsSection: React.FC<AchievementsSectionProps> = ({
 
             {isDetailsVisible && (
                 <motion.div
-                    className="mt-4 p-4 bg-black/80 rounded-md"
+                    className="mt-4  bg-black/80 rounded-md"
                     initial={{ opacity: 0, height: 0 }}
                     animate={{ opacity: 1, height: 'auto' }}
                     exit={{ opacity: 0, height: 0 }}
                     transition={{ duration: 0.9 }}
+                    style={{ padding: '20px 0 20px 0' }}
                 >
                     <div className="mt-4 gradient-border p-6">
                         <div className='mb-4'>
@@ -45,7 +46,8 @@ const AchievementsSection: React.FC<AchievementsSectionProps> = ({
                             </p>
                         </div>
                         <div className="flex justify-between items-center mb-2">
-                            <span className="text-[16px]">Прогресс</span>
+                            <span className="text-[16px]"
+                                style={{ fontFamily: 'monospace', fontWeight: 'bold' }}>Прогресс</span>
                             <span className="text-sm text-gray-400">
                                 {Math.round((achievementsCount / totalAchievements) * 100)}%
                             </span>
@@ -61,7 +63,7 @@ const AchievementsSection: React.FC<AchievementsSectionProps> = ({
                         <div>
                             <button
                                 onClick={() => navigate('/achievements')}
-                                className="cursor-pointer px-6 py-2 gradient-border rounded-lg text-white font-semibold hover:opacity-90 transition-opacity"
+                                className="cursor-pointer px-6 py-2 bg-[#4b817d] rounded-lg text-white font-semibold hover:opacity-90 transition-opacity"
                             >
                                 Смотреть
                             </button>

@@ -44,7 +44,8 @@ const CashbackLevel: React.FC<CashbackLevelProps> = React.memo(({
                     : null;
 
                 return (
-                    <span>
+                    <span className='text-[16px]'
+                        style={{ fontFamily: 'monospace', fontWeight: 'bold' }}>
                         Для {req.level}%: {visitsMessage} {spentMessage && 'и '}{spentMessage}
                     </span>
                 );

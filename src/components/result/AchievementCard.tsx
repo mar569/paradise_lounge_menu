@@ -74,7 +74,8 @@ const AchievementsCard: React.FC<AchievementsCardProps> = ({
 
                 <div className="mb-6">
                     <div className="flex justify-between items-center mb-2">
-                        <span className="text-sm font-medium text-gray-700">Прогресс</span>
+                        <span className="text-[18px] font-medium text-gray-700"
+                            style={{ fontFamily: 'monospace', fontWeight: 'bold' }}>Прогресс</span>
                         <span className="text-sm text-gray-600">
                             {achievement.progress}/{achievement.target}
                         </span>

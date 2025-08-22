@@ -36,7 +36,8 @@ export const Achievement: React.FC<AchievementProps> = ({ achievement, onClick }
 
             <div className="mb-3 ">
                 <div className="flex justify-between items-center mb-1">
-                    <span className="text-[16px] text-[#058c6f] mb-2">Прогресс</span>
+                    <span className="text-[18px] text-[#058c6f] mb-2"
+                        style={{ fontFamily: 'monospace', fontWeight: 'bold' }}>Прогресс</span>
                     <span className="text-sm">
                         {achievement.progress}/{achievement.target}
                     </span>
@@ -47,8 +48,6 @@ export const Achievement: React.FC<AchievementProps> = ({ achievement, onClick }
                         style={{ width: `${Math.min((achievement.progress / achievement.target) * 100, 100)}%` }}
                     />
                 </div>
-
-
 
                 <div className="flex justify-between items-center mt-2">
 

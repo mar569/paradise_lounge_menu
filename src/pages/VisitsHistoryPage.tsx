@@ -70,14 +70,14 @@ const VisitsHistoryPage: React.FC = () => {
                             <li key={visit.id} className="p-4 hover:bg-[#2c2c2c] cursor-pointer">
                                 <div className="flex justify-between items-start">
                                     <div>
-                                        <p className="font-medium text-[#fff]">
+                                        <p className="font-medium text-[#fff] text-lg">
                                             {visit.cafeName || 'Посещение'}
                                         </p>
-                                        <p className="text-sm text-[#c6c3c3]">
+                                        <p className="text-lg text-[#c6c3c3]">
                                             {formatDate(visit.timestamp)}
                                         </p>
                                         {visit.orderAmount > 0 && (
-                                            <p className="text-sm">Сумма чека: {visit.orderAmount} ₽</p>
+                                            <p className="text-lg">Сумма чека: {visit.orderAmount} ₽</p>
                                         )}
                                     </div>
                                     <p className={visit.cashback > 0 ? 'text-green-500 font-bold' : 'text-red-500 font-bold'}>
@@ -85,7 +85,7 @@ const VisitsHistoryPage: React.FC = () => {
                                     </p>
                                 </div>
                                 {visit.isDeduction && (
-                                    <p className="text-xs text-red-400 mt-1">Списание баллов</p>
+                                    <p className="text-[16px] text-red-400 mt-1">Списание баллов</p>
                                 )}
                             </li>
                         ))}
