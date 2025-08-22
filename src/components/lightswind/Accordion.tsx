@@ -81,11 +81,11 @@ const AccordionItem = React.forwardRef<HTMLDivElement, AccordionItemProps>(
 AccordionItem.displayName = "AccordionItem";
 
 interface AccordionTriggerProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-    type?: "single" | "multiple"; // Add type prop here
+    accordionType?: "single" | "multiple"; // Renamed type prop
 }
 
 const AccordionTrigger = React.forwardRef<HTMLButtonElement, AccordionTriggerProps>(
-    ({ className, children, type, ...props }, ref) => {
+    ({ className, children, accordionType, ...props }, ref) => {
         const context = React.useContext(AccordionContext);
         if (!context) throw new Error("AccordionTrigger must be used within an Accordion");
 
@@ -100,7 +100,7 @@ const AccordionTrigger = React.forwardRef<HTMLButtonElement, AccordionTriggerPro
         const handleToggle = () => {
             const newValues = isOpen
                 ? values.filter(v => v !== itemValue)
-                : type === "single"
+                : accordionType === "single"
                     ? [itemValue]
                     : [...values, itemValue];
 
@@ -138,7 +138,8 @@ const AccordionTrigger = React.forwardRef<HTMLButtonElement, AccordionTriggerPro
 AccordionTrigger.displayName = "AccordionTrigger";
 
 
-interface AccordionContentProps extends React.HTMLAttributes<HTMLDivElement> { }
+
+type AccordionContentProps = React.HTMLAttributes<HTMLDivElement>
 
 const AccordionContent = React.forwardRef<HTMLDivElement, AccordionContentProps>(
     ({ className, children, ...props }, ref) => {
