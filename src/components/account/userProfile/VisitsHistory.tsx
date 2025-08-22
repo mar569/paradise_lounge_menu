@@ -42,14 +42,14 @@ const VisitsHistory: React.FC<VisitsHistoryProps> = React.memo(({
                 </p>
             </div>
             <div className="flex-1 p-4">
-                <div className="mt-4 flex justify-between items-end gradient-border px-2 py-3">
+                <div className="mt-4 flex justify-between items-end border-1 border-[#7bc0a6] rounded-2xl px-2 py-3">
                     <div>
                         <div className='flex items-end'>
-                            <button onClick={handleViewHistory} className="cursor-pointer text-[16px] sm:text-lg md:text-xl font-semibold"
+                            <button onClick={handleViewHistory} className="cursor-pointer text-[16px] sm:text-lg md:text-xl font-semibold "
                                 style={{ padding: '0 10px 0 10px', fontFamily: 'monospace' }}>
                                 История посещений:
                             </button>
-                            <TbMapPinCheck onClick={handleViewHistory} className='cursor-pointer absolute bottom-0 right-0 text-[#76c7c0]' size={22} />
+                            <TbMapPinCheck onClick={handleViewHistory} className='cursor-pointer absolute bottom-4 right-4 text-[#76c7c0]' size={22} />
                         </div>
                         <ul className="mt-2 text-[#d1cfcf]">
                             {sortedVisitsHistory.length > 0 ? (
