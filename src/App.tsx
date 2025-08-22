@@ -1,25 +1,34 @@
-import { useEffect, useState } from 'react';
-import { Routes, Route, useLocation } from 'react-router-dom';
+import { useEffect, useState, Suspense, lazy } from 'react';
+import { Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import 'react-toastify/dist/ReactToastify.css';
-import { ToastContainer } from 'react-toastify'; // Импортируем ToastContainer
+import { ToastContainer } from 'react-toastify';
 import PageLayout from './components/PageLayout';
-import Home from './pages/Home';
-import Lemonades from './pages/Lemonades';
-import Rules from './pages/Rules';
 import ParticleOrbitEffect from './components/lightswind/particleOrbitEffect';
 import ShaderBackground from './components/lightswind/shadedBackground';
-import Tea from './pages/Tea';
-import Profile from './pages/Profile';
-import NotAuth from './pages/NotAuth';
-import AuthPage from './pages/AuthPage';
-import PrivateRoute from './components/PrivateRoute';
-import AdminDashboard from './components/admin/AdminDashboard';
-import Cocktails from './pages/Coctails';
+import ErrorBoundary from './components/ErrorBoundary';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import { auth } from './services/firebase';
+import AgeVerificationPage from './pages/AgeVerificationPage'; // Import the new page
 
+const Home = lazy(() => import('./pages/Home'));
+const Lemonades = lazy(() => import('./pages/Lemonades'));
+const Rules = lazy(() => import('./pages/Rules'));
+const Tea = lazy(() => import('./pages/Tea'));
+const Profile = lazy(() => import('./pages/Profile'));
+const NotAuth = lazy(() => import('./pages/NotAuth'));
+const AuthPage = lazy(() => import('./pages/AuthPage'));
+const PrivateRoute = lazy(() => import('./components/PrivateRoute'));
+const AdminDashboard = lazy(() => import('./components/admin/AdminDashboard'));
+const VisitsHistoryPage = lazy(() => import('./pages/VisitsHistoryPage'));
+const Cocktails = lazy(() => import('./pages/Cocktails'));
+const NotFound = lazy(() => import('./pages/NotFound'));
+const AchievementsPage = lazy(() => import('./pages/AchievementsPage'));
 
 function App() {
   const [loading, setLoading] = useState(true);
-  const location = useLocation();
+  const [user] = useAuthState(auth);
+  const [isAgeVerified, setIsAgeVerified] = useState<boolean>(false);
+  const location = useLocation(); // Получаем текущий путь
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -29,39 +38,74 @@ function App() {
     return () => clearTimeout(timer);
   }, []);
 
+  useEffect(() => {
+    // Проверяем, было ли подтверждено возраст ранее
+    const ageVerified = localStorage.getItem('ageVerified');
+    if (ageVerified === 'true') {
+      setIsAgeVerified(true);
+    }
+  }, []);
+
+  const handleAgeVerification = () => {
+    setIsAgeVerified(true);
+    localStorage.setItem('ageVerified', 'true');
+  };
+
+  const handleDenyAgeVerification = () => {
+    window.location.href = 'https://www.ivi.ru/';
+  };
+
+
   const isAuthPage = location.pathname === '/auth-page';
+  const isAdminDashboard = location.pathname === '/admin';
+  const isVisitsHistory = location.pathname === '/visits-history';
 
   return (
-    <div className={`min-h-screen bg-black text-white ${isAuthPage ? 'bgI' : 'bg-black'}`}>
-      <ToastContainer position="top-center" />
-      {loading ? (
-        <ParticleOrbitEffect className="absolute inset-0" />
-      ) : (
-        <div className="relative">
-          {!isAuthPage && (
-            <ShaderBackground className="absolute inset-0" color="#07EAC0" backdropBlurAmount="md" />
-          )}
-          <PageLayout>
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/cocktails" element={<Cocktails />} />
-              <Route path="/teas" element={<Tea />} />
-              <Route path="/lemonades" element={<Lemonades />} />
-              <Route path="/rules" element={<Rules />} />
-              <Route path="/profile" element={<Profile />} />
-              <Route path="/not-auth" element={<NotAuth />} />
-              <Route path="/auth-page" element={<AuthPage />} />
-              <Route
-                path="/admin"
-                element={
-                  <PrivateRoute adminOnly={true} element={<AdminDashboard />} />
-                }
+    <ErrorBoundary>
+      <div className={`min-h-screen bg-black text-white`}>
+        <ToastContainer position="top-center" />
+        {loading ? (
+          <ParticleOrbitEffect className="absolute inset-0" />
+        ) : (
+          <div className="relative">
+            {!isAgeVerified && (
+              <AgeVerificationPage
+                onConfirm={handleAgeVerification}
+                onDeny={handleDenyAgeVerification}
               />
-            </Routes>
-          </PageLayout>
-        </div>
-      )}
-    </div>
+            )}
+            {isAgeVerified && (
+              <>
+
+                {!isAuthPage && !isAdminDashboard && !isVisitsHistory && (
+                  <ShaderBackground className="absolute inset-0" color="#07EAC0" backdropBlurAmount="md" />
+                )}
+                <PageLayout>
+                  <Suspense fallback={<div className="spinner-container">
+                    <div className="spinner"></div>
+                  </div>}>
+                    <Routes>
+                      <Route path="/" element={<Home />} />
+                      <Route path="/cocktails" element={<Cocktails />} />
+                      <Route path="/teas" element={<Tea />} />
+                      <Route path="/lemonades" element={<Lemonades />} />
+                      <Route path="/rules" element={<Rules />} />
+                      <Route path="/profile" element={<Profile />} />
+                      <Route path="/not-auth" element={<NotAuth />} />
+                      <Route path="/auth-page" element={<AuthPage />} />
+                      <Route path="/visits-history" element={<VisitsHistoryPage />} />
+                      <Route path="/achievements" element={user ? <AchievementsPage userId={user.uid} /> : <Navigate to="/auth-page" />} />
+                      <Route path="/admin" element={<PrivateRoute adminOnly={true} element={<AdminDashboard />} />} />
+                      <Route path="*" element={<NotFound />} />
+                    </Routes>
+                  </Suspense>
+                </PageLayout>
+              </>
+            )}
+          </div>
+        )}
+      </div>
+    </ErrorBoundary>
   );
 }
 

@@ -1,11 +1,17 @@
-// Импортируйте необходимые функции из SDK
 import { initializeApp } from 'firebase/app';
-import { getAuth } from 'firebase/auth';
-import { getFirestore } from 'firebase/firestore';
-import { getStorage } from 'firebase/storage';
-import { initializeAppCheck, ReCaptchaV3Provider } from 'firebase/app-check';
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  sendEmailVerification,
+} from 'firebase/auth';
+import { getFirestore, doc, setDoc, serverTimestamp } from 'firebase/firestore';
+import {
+  initializeAppCheck,
+  ReCaptchaV3Provider,
+  getToken,
+} from 'firebase/app-check';
 
-// Конфигурация вашего веб-приложения Firebase
 const firebaseConfig = {
   apiKey: 'AIzaSyATaMjs5PJvToPKJWhahjWw7WfNxLiKufk',
   authDomain: 'paradise-lounge-4a4b7.firebaseapp.com',
@@ -16,18 +22,37 @@ const firebaseConfig = {
   measurementId: 'G-L9W6H4GJD2',
 };
 
-// Инициализация Firebase
 const app = initializeApp(firebaseConfig);
 
-const auth = getAuth(app); // Инициализация аутентификации
-const db = getFirestore(app); // Инициализация Firestore
-const storage = getStorage(app); // Инициализация Storage
+// Инициализация сервисов
+const auth = getAuth(app);
+const db = getFirestore(app);
 
-// Инициализация App Check с использованием reCAPTCHA v3
+// App Check с reCAPTCHA v3
 const appCheck = initializeAppCheck(app, {
-  provider: new ReCaptchaV3Provider('6LfQW6YrAAAAABWBiuXL2r3XSXyavCoyZaSyS100'), // Замените на ваш ключ сайта
-  isTokenAutoRefreshEnabled: true, // Автоматическое обновление токена
+  provider: new ReCaptchaV3Provider('6Lewg64rAAAAALoHsMQt_dj4LAZeroP-9w9vRBTK'), // Замените на ваш ключ сайта
+  isTokenAutoRefreshEnabled: false, // Автоматическое обновление токена
 });
 
-// Экспортируем auth, db, storage и appCheck
-export { auth, db, storage, appCheck };
+async function getAppCheckToken() {
+  try {
+    const token = await getToken(appCheck);
+    return token;
+  } catch (error) {
+    console.error('Error getting App Check token:', error);
+    return null;
+  }
+}
+
+export {
+  auth,
+  db,
+  appCheck,
+  getAppCheckToken,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  sendEmailVerification,
+  doc,
+  setDoc,
+  serverTimestamp,
+};

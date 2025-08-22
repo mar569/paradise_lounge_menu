@@ -38,7 +38,7 @@ export default function Rules() {
             <div className="flex justify-between">
                 <button
                     onClick={() => navigate("/")}
-                    className="mt-6 left-4 text-[#a4a0ab] cursor-pointer flex items-center hover:underline group"
+                    className="mt-6 left-4 text-[#058c6f] cursor-pointer flex items-center hover:underline group"
                 >
                     <ArrowLeft className="w-5 h-5 relative z-10 transition-transform group-hover:translate-x-1" />
                     <span className="relative z-10 text-[24px] ml-2"
@@ -47,7 +47,7 @@ export default function Rules() {
                     <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-gray-500 transition-all duration-300 group-hover:w-full"></span>
                 </button>
                 <div onClick={() => setOpenFine(!openFine)}>
-                    <button className="mt-6 right-4 text-[#a4a0ab] border border-[#2c2c2c] rounded-lg px-2 py-1 cursor-pointer flex items-center hover:underline">Штрафы</button>
+                    <button className="mt-6 right-4 text-[#a4a0ab] bg-[#0b0b0b] border border-[#2c2c2c] rounded-lg px-2 py-1 cursor-pointer flex items-center hover:underline">Штрафы</button>
                 </div>
                 <AnimatePresence>
                     {openFine && (
@@ -63,7 +63,7 @@ export default function Rules() {
                                 <ul className="text-[#f0eeee] list-disc pl-6 space-y-2 text-[20px]">
                                     <li>За разбитую колбу - 1500 ₽.</li>
                                     <li>За разбитую чашу - 700 ₽.</li>
-                                    <li>Прожег диван? - по стоимости ремонта.</li>
+                                    <li>Прожег диван? - стоимость ремонта.</li>
                                 </ul>
                                 <div className="flex float-right">
                                     <button

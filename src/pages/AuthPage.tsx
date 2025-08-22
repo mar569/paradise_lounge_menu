@@ -1,22 +1,24 @@
+
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth, db } from '../services/firebase';
 import { doc, getDoc, updateDoc } from 'firebase/firestore';
-import UserProfile from '../components/account/UserProfile';
+import UserProfile from '../components/account/userProfile/UserProfile';
 import { sendPasswordResetEmail } from 'firebase/auth';
 
 interface UserData {
     id: string;
+    userId: string;
     name: string;
     email: string;
+    dateOfBirth: string;
     createdAt: Date;
-    status: 'pending' | 'active' | 'admin';
+    status: 'pending' | 'active' | 'admin' | 'deleted';
     emailVerified: boolean;
     avatarUrl?: string;
     visits: number;
     cashback: number;
-    qrCode?: string;
     orderAmount: number;
 }
 
@@ -35,13 +37,14 @@ const AuthPage: React.FC = () => {
                         const data = userDoc.data() as UserData;
                         setUserData(data);
 
-                        // Обновляем статус если нужно
                         if (user.emailVerified && data.status === 'pending') {
                             await updateDoc(doc(db, 'users', user.uid), {
                                 status: 'active'
                             });
                             setUserData(prev => ({ ...prev!, status: 'active' }));
                         }
+                    } else {
+                        setMessage('Пользователь не найден.');
                     }
                 } catch (error) {
                     console.error("Ошибка загрузки данных:", error);
@@ -55,11 +58,11 @@ const AuthPage: React.FC = () => {
 
     useEffect(() => {
         if (!loading && !user) {
-            navigate('/auth-page'); // Перенаправляем на страницу входа, если пользователь не авторизован
+            navigate('/auth-page');
         } else if (user && !user.emailVerified) {
-            navigate('/not-auth'); // Перенаправляем на страницу NotAuth, если почта не подтверждена
+            navigate('/not-auth');
         } else if (user && user.email === 'efiminkirill01@mail.ru') {
-            navigate('/admin'); // Перенаправляем на админский интерфейс
+            navigate('/admin');
         }
     }, [user, loading, navigate]);
 
@@ -72,35 +75,39 @@ const AuthPage: React.FC = () => {
         }
     };
 
-    if (loading) return <div className='spinner'></div>;
+    if (loading) return (
+        <div className="spinner-container">
+            <div className="spinner"></div>
+        </div>
+    );
 
     return (
-        <div className='bgI '>
+        <div className='bgI'>
             <div className="container mx-auto px-4 py-8 max-w-md">
-                {userData && (
-                    <div className="">
-                        <UserProfile
-                            userData={userData}
-                            onLogout={async () => {
-                                await auth.signOut();
-                                localStorage.removeItem('isAuthenticated');
-                                navigate('/');
-                            }}
-                            onUpdateProfile={async (updatedData: Partial<UserData>) => {
-                                await updateDoc(doc(db, 'users', user!.uid), updatedData);
-                                setUserData(prev => ({ ...prev!, ...updatedData }));
-                            }}
-                            onEditProfile={(newName: string) => {
-                                setUserData(prev => (prev ? { ...prev!, name: newName } : null));
-                            }}
-                            onPasswordReset={handlePasswordReset}
-                        />
-                        {message && (
-                            <p className="mt-4 p-2 text-sm text-center rounded-md bg-white bg-opacity-20">
-                                {message}
-                            </p>
-                        )}
-                    </div>
+                {userData ? (
+                    <UserProfile
+                        userData={userData}
+                        onLogout={async () => {
+                            await auth.signOut();
+                            localStorage.removeItem('isAuthenticated');
+                            navigate('/');
+                        }}
+                        onUpdateProfile={async (updatedData: Partial<UserData>) => {
+                            await updateDoc(doc(db, 'users', user!.uid), updatedData);
+                            setUserData(prev => ({ ...prev!, ...updatedData }));
+                        }}
+                        onEditProfile={(newName: string) => {
+                            setUserData(prev => (prev ? { ...prev!, name: newName } : null));
+                        }}
+                        onPasswordReset={handlePasswordReset}
+                    />
+                ) : (
+                    <div></div>
+                )}
+                {message && (
+                    <p className="mt-4 p-2 text-sm text-center rounded-md bg-opacity-20">
+                        {message}
+                    </p>
                 )}
             </div>
         </div>

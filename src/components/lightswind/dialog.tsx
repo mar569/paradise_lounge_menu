@@ -73,7 +73,7 @@ const DialogTrigger = React.forwardRef<HTMLDivElement, DialogTriggerProps & Reac
                 <div
                     ref={ref}
                     onClick={handleClick}
-                    {...props} // Spread the remaining props
+                    {...props}
                 >
                     {React.Children.map(children, (child) => {
                         if (React.isValidElement(child)) {
@@ -91,7 +91,7 @@ const DialogTrigger = React.forwardRef<HTMLDivElement, DialogTriggerProps & Reac
             <div
                 ref={ref}
                 onClick={handleClick}
-                {...props} // Spread the remaining props
+                {...props}
             >
                 {children}
             </div>
@@ -128,7 +128,7 @@ const DialogContent = React.forwardRef<HTMLDivElement, OmittedDialogContentHTMLA
         return (
             <AnimatePresence>
                 {open && (
-                    <div className="fixed inset-0 z-50 flex items-center justify-center">
+                    <div className="fixed inset-0 z-50 flex items-center justify-center p-6">
                         {/* Backdrop Overlay */}
                         <motion.div
                             initial={{ opacity: 0 }}
@@ -147,9 +147,10 @@ const DialogContent = React.forwardRef<HTMLDivElement, OmittedDialogContentHTMLA
                             exit={{ opacity: 0, scale: 0.95 }}
                             transition={{ duration: 0.2, ease: "easeOut" }}
                             className={cn(
-                                "relative z-50 w-full max-w-lg rounded-lg border bg-background p-6 shadow-lg",
+                                "relative z-50 w-full max-w-lg rounded-lg border-1 border-[#3cb755] bg-transparent p-6 ",
                                 className
                             )}
+                            style={{ boxShadow: "0 25px 50px -12px rgb(120 185 132 / 0.4)" }}
                             role="dialog"
                             aria-modal="true"
                             {...(props as HTMLMotionProps<'div'>)}
@@ -160,7 +161,7 @@ const DialogContent = React.forwardRef<HTMLDivElement, OmittedDialogContentHTMLA
                                 className="absolute right-4 top-4 rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:pointer-events-none"
                                 aria-label="Close dialog"
                             >
-                                <X className="h-4 w-4" />
+                                <X className="h-7 w-7 mt-1 cursor-pointer text-[#f0fefb]" />
                                 <span className="sr-only">Close</span>
                             </button>
                         </motion.div>

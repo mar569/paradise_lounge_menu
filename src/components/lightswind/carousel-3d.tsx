@@ -88,7 +88,7 @@ const Carousel3D = ({
     >
       <div className="w-full px-4 sm:px-6 lg:px-8 min-w-[350px] md:min-w-[1000px] max-w-7xl">
         <div
-          className="relative overflow-hidden min-h-[400px] h-[60vh] lg:h-[65vh] 2xl:h-[70vh]"
+          className="relative overflow-hidden min-h-[500px] h-[60vh] lg:h-[65vh] 2xl:h-[70vh]"
           onMouseEnter={() => setIsHovering(true)}
           onMouseLeave={() => setIsHovering(false)}
           onTouchStart={onTouchStart}
@@ -96,13 +96,13 @@ const Carousel3D = ({
           onTouchEnd={onTouchEnd}
           ref={carouselRef}
         >
-          <div className="absolute top-0 left-0 w-full h-full flex items-center justify-center">
+          <div className="absolute  top-0 left-0 w-full h-full flex items-center justify-center ">
             {items.map((item, index) => (
               <div
                 key={item.id}
                 className={`absolute top-0 w-full max-w-md transform transition-all duration-500 ${getCardAnimationClass(index)}`}
               >
-                <Card className={`overflow-hidden bg-background h-[${cardHeight}px] border shadow-sm hover:shadow-md flex flex-col`}>
+                <Card className={`overflow-hidden bg-background h-[${cardHeight}px] border-2 border-[#5a6360] shadow-sm hover:shadow-md flex flex-col`}>
                   <div
                     className="relative bg-black p-6 flex items-center justify-center h-55 overflow-hidden"
                     style={{
@@ -122,11 +122,11 @@ const Carousel3D = ({
                     </div>
                   </div>
 
-                  <CardContent className="p-6 flex flex-col flex-grow bg-black">
-                    <h3 className="text-[24px] text-gray-200 font-bold mb-1 text-foreground">
+                  <CardContent className="p-6 flex flex-col flex-grow bg-[#070707]">
+                    <h3 className="text-[24px] text-[#e3ebe9] font-bold mb-1 text-foreground">
                       {item.title}
                     </h3>
-                    <p className="text-gray-600 text-[20px] flex-grow">
+                    <p className="text-gray-300 text-[20px] flex-grow">
                       {item.description}
                     </p>
 
@@ -135,7 +135,7 @@ const Carousel3D = ({
                         {item.tags.map((tag, idx) => (
                           <span
                             key={idx}
-                            className="px-2 py-1 text-[16px] bg-gray-50 text-gray-600 rounded-full animate-pulse-slow"
+                            className="px-2 py-1 text-[16px] bg-[#cef8e7] text-[#242525] rounded-full animate-pulse-slow"
                             style={{ fontFamily: "'Nunito', sans-serif" }}
                           >
                             {tag}
@@ -145,7 +145,7 @@ const Carousel3D = ({
 
                       <Link
                         to={item.link}
-                        className="text-gray-500 flex items-center hover:underline relative group "
+                        className="text-gray-500 flex items-center hover:underline relative group hover:text-[#058c6f]"
                         onClick={() => {
                           if (item.link.startsWith("/")) {
                             window.scrollTo(0, 0);
@@ -154,7 +154,7 @@ const Carousel3D = ({
                       >
                         <span className="relative z-10 text-[18px]" style={{ fontFamily: "'Nunito', sans-serif" }}>Просмотреть</span>
                         <ArrowRight className="ml-2 w-4 h-4 relative z-10 transition-transform group-hover:translate-x-1" />
-                        <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-gray-500 transition-all duration-300 group-hover:w-full"></span>
+                        <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-[#058c6f] transition-all duration-300 group-hover:w-full"></span>
                       </Link>
                     </div>
                   </CardContent>
@@ -166,14 +166,14 @@ const Carousel3D = ({
           {!isMobile && (
             <>
               <button
-                className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/80 rounded-full flex items-center justify-center text-gray-500 hover:bg-white z-30 shadow-md transition-all hover:scale-110"
+                className="absolute left-6 top-1/2 -translate-y-1/2 w-8 h-8 bg-white/80 rounded-full flex items-center justify-center text-gray-500 hover:bg-white z-30 shadow-md transition-all hover:scale-110"
                 onClick={() => setActive((prev) => (prev - 1 + items.length) % items.length)}
                 aria-label="Previous"
               >
                 <ChevronLeft className="w-8 h-8 cursor-pointer" />
               </button>
               <button
-                className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/80 rounded-full flex items-center justify-center text-gray-500 hover:bg-white z-30 shadow-md transition-all hover:scale-110"
+                className="absolute right-6 top-1/2 -translate-y-1/2 w-8 h-8 bg-white/80 rounded-full flex items-center justify-center text-gray-500 hover:bg-white z-30 shadow-md transition-all hover:scale-110"
                 onClick={() => setActive((prev) => (prev + 1) % items.length)}
                 aria-label="Next"
               >

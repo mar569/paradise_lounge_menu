@@ -143,11 +143,11 @@ export function PasswordStrengthIndicator({
                 )}
             </div>
 
-            <div className="h-1 w-full pr-2 pl-2 bg-[#1f1f1f] rounded-full overflow-hidden flex gap-0.5">
+            <div className="h-1 w-full pr-2 pl-2 bg-transparent rounded-full overflow-hidden flex gap-0.5">
                 {Array.from({ length: 4 }).map((_, i) => (
                     <div
                         key={i}
-                        className={`h-full flex-1 rounded-full transition-all duration-300 ${i < Math.min(Math.ceil(score / 1.5), 4) ? strengthColors[level] : "bg-[#141414]"}`}
+                        className={`h-full flex-1 rounded-full transition-all duration-300 ${i < Math.min(Math.ceil(score / 1.5), 4) ? strengthColors[level] : "bg-[#6e6e6e]"}`}
                     />
                 ))}
             </div>

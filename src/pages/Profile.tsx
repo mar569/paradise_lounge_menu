@@ -40,7 +40,11 @@ const Profile: React.FC = () => {
     };
 
     if (loading) {
-        return <div className="spinner">Загрузка...</div>;
+        return (
+            <div className="spinner-container">
+                <div className="spinner"></div>
+            </div>
+        )
     }
 
     return (

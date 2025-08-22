@@ -75,7 +75,7 @@ export default function Cocktails() {
 
                 <button
                     onClick={() => setShowVideo(!showVideo)}
-                    className="ml-auto flex items-center cursor-pointer"
+                    className="ml-auto flex items-center "
                 >
                     {showVideo ? (
                         <>
@@ -83,7 +83,7 @@ export default function Cocktails() {
                         </>
                     ) : (
                         <>
-                            <span className="mr-2 text-[32px]">✨</span>
+                            <span className="mr-2 text-4xl">✨</span>
                         </>
                     )}
                 </button>
@@ -139,7 +139,7 @@ export default function Cocktails() {
             <div className="mt-16">
                 <button
                     onClick={() => navigate("/")}
-                    className="absolute bottom-6 left-4 text-[#a4a0ab] cursor-pointer flex items-center hover:underline group z-20"
+                    className="absolute bottom-6 left-4 text-[#058c6f] cursor-pointer flex items-center hover:underline group z-20"
                 >
                     <ArrowLeft className="w-5 h-5 relative z-10 transition-transform group-hover:translate-x-1" />
                     <span className="relative z-10 text-[24px] ml-2"

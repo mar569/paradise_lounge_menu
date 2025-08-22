@@ -67,7 +67,7 @@ const LoginForm: React.FC<LoginFormProps> = ({ onSwitchMode, onPasswordReset, on
             <p id="heading">Вход</p>
             <div className="field">
                 <input
-                    autoComplete="off"
+                    autoComplete="on"
                     placeholder="Email"
                     className="input-field ml-2"
                     type="email"

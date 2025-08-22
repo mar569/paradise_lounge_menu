@@ -30,9 +30,9 @@ export default function Lemonades() {
     ];
 
     return (
-        <div className="p-8 w-full max-w-[1200px] mx-auto">
+        <div className="p-8 w-full max-w-[1200px] mx-auto ">
             <h2 className="text-[36px] text-center font-bold mb-4 text-[#f3f1d7]">Лимонады</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 ">
                 {lemonades.map((lemonade, index) => (
                     <div key={index} className="rounded-lg p-4 "
                         style={{
@@ -62,12 +62,11 @@ export default function Lemonades() {
             </div>
             <button
                 onClick={() => navigate("/")}
-                className="text-[#a4a0ab] cursor-pointer flex items-center hover:underline relative group mt-4"
+                className=" text-[#058c6f] cursor-pointer flex items-center hover:underline group z-20 mt-6"
             >
                 <ArrowLeft className="w-5 h-5 relative z-10 transition-transform group-hover:translate-x-1" />
                 <span className="relative z-10 text-[24px] ml-2"
                     style={{ fontFamily: 'Sofia', fontWeight: 'bold' }}>вернуться обратно</span>
-
                 <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-gray-500 transition-all duration-300 group-hover:w-full"></span>
             </button>
         </div>
