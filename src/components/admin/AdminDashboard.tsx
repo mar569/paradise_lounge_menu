@@ -321,7 +321,8 @@ const AdminDashboard: React.FC = () => {
     return (
         <div className='bgI p-6'>
             <div className="flex justify-between items-center mb-6">
-                <h2 className="text-2xl font-bold gradient-text">Административная панель</h2>
+                <h2 className="text-2xl font-bold gradient-text"
+                    style={{ fontFamily: 'monospace' }}>Административная панель</h2>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">

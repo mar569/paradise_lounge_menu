@@ -4,7 +4,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { createUserWithEmailAndPassword, sendEmailVerification } from 'firebase/auth';
 import { doc, setDoc, serverTimestamp } from 'firebase/firestore';
-import { auth, db, getAppCheckToken } from '../../services/firebase';
+import { auth, db } from '../../services/firebase';
 import { motion } from 'framer-motion';
 import { PasswordStrengthIndicator } from '../lightswind/PasswordStrengthIndicator';
 import { PasswordConfirmationField } from '../lightswind/PasswordConfirmationField';
@@ -52,22 +52,15 @@ const RegisterForm: React.FC<RegisterFormProps> = ({ onSwitchMode, onRegistratio
     const password = watch('password');
     const [isLoading, setIsLoading] = useState(false);
 
-
     const today = new Date();
     const maxDate = new Date(today.getFullYear() - 18, today.getMonth(), today.getDate());
     const maxDateStr = maxDate.toISOString().split('T')[0];
-
 
     const minDateStr = '1900-01-01';
 
     const handleRegister = useCallback(async (data: { name: string; email: string; password: string; confirmPassword: string; dateOfBirth: string }) => {
         setIsLoading(true);
         try {
-            const appCheckToken = await getAppCheckToken();
-            if (!appCheckToken) {
-                throw new Error('App verification failed');
-            }
-
             const userCredential = await createUserWithEmailAndPassword(auth, data.email, data.password);
             await sendEmailVerification(userCredential.user);
 
