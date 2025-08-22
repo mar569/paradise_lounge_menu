@@ -72,7 +72,7 @@ export default function Home() {
         <div className="relative overflow-hidden min-h-screen">
             <div className="container mx-auto px-4 py-14  relative z-10 min-h-screen">
                 <div className="text-center mb-8">
-                    <div className='absolute top-1 right-1'>
+                    <div className='absolute top-2 right-1'>
                         <button
                             onClick={handleProfileClick}
                             className="flex items-center justify-center p-2 bg-transparent rounded-full hover:bg-black transition cursor-pointer"
