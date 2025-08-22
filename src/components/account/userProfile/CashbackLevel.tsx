@@ -39,13 +39,15 @@ const CashbackLevel: React.FC<CashbackLevelProps> = React.memo(({
 
                 const spentMessage = remainingSpent > 0
                     ? (remainingSpent <= 0
-                        ? <span>сумма достигнута <FaCheck className="inline-block ml-1" /></span>
-                        : <span>{remainingSpent}₽</span>)
+                        ? <span
+                            style={{ fontFamily: 'Poppins', fontWeight: 'bold' }}>сумма достигнута <FaCheck className="inline-block ml-1" /></span>
+                        : <span
+                            style={{ fontFamily: 'Poppins', fontWeight: 'bold' }}>{remainingSpent}₽</span>)
                     : null;
 
                 return (
                     <span className='text-[16px]'
-                        style={{ fontFamily: 'monospace', fontWeight: 'bold' }}>
+                        style={{ fontFamily: 'Poppins', fontWeight: 'bold' }}>
                         Для {req.level}%: {visitsMessage} {spentMessage && 'и '}{spentMessage}
                     </span>
                 );
@@ -69,10 +71,14 @@ const CashbackLevel: React.FC<CashbackLevelProps> = React.memo(({
 
             <div className="relative">
                 <div className="flex justify-between mb-1">
-                    <span className="text-lg font-bold text-[#76c7c0]">0%</span>
-                    <span className="text-lg font-bold text-[#76c7c0] ml-6">3%</span>
-                    <span className="text-lg font-bold text-[#76c7c0]">5%</span>
-                    <span className="text-lg font-bold text-[#76c7c0]">10%</span>
+                    <span className="text-lg font-bold text-[#76c7c0]"
+                        style={{ fontFamily: 'Poppins', fontWeight: 'bold' }}>0%</span>
+                    <span className="text-lg font-bold text-[#76c7c0] ml-6"
+                        style={{ fontFamily: 'Poppins', fontWeight: 'bold' }}>3%</span>
+                    <span className="text-lg font-bold text-[#76c7c0]"
+                        style={{ fontFamily: 'Poppins', fontWeight: 'bold' }}>5%</span>
+                    <span className="text-lg font-bold text-[#76c7c0]"
+                        style={{ fontFamily: 'Poppins', fontWeight: 'bold' }}>10%</span>
                 </div>
 
                 <div className="h-4 bg-gray-300 rounded-full overflow-hidden relative">

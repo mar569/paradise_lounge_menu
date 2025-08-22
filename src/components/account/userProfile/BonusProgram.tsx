@@ -54,7 +54,7 @@ const BonusProgram: React.FC = () => {
                         <AccordionItem value="bonus5">
                             <AccordionTrigger>Баллы</AccordionTrigger>
                             <AccordionContent>
-                                <h2> 1 балл = 1 рубль. </h2>
+                                <h2 className='text-[#fff] text-[18px]' style={{ fontFamily: 'Poppins', fontWeight: 'bold' }}> 1 балл = 1 рубль. </h2>
                                 <div className='mt-4 border-1 border-[#875ed3] p-4 rounded-2xl'>
                                     <h3 className='text-[#875ed3] text-xl mb-1'>Cashback 0%</h3>
                                     <p className='text-[#fff]'>
