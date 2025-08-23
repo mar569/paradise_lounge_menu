@@ -15,7 +15,7 @@ const categories: Carousel3DItem[] = [
         description: "Дым и вкус — идеальное сочетание",
         tags: ["Дымно", "Миксы под настроение"],
         imageUrl: hookah,
-        link: "/cocktails",
+        link: "/cocktails-page-:cocktail",
     },
     {
         id: 2,
@@ -24,7 +24,7 @@ const categories: Carousel3DItem[] = [
         description: "Настоящий чай для настоящих ценителей",
         tags: ["Ароматные", "Микс для гурманов"],
         imageUrl: tea,
-        link: "/teas",
+        link: "/teas-slug-:tea",
     },
     {
         id: 3,
@@ -33,7 +33,7 @@ const categories: Carousel3DItem[] = [
         description: "Свежесть в каждом глотке",
         tags: ["Лимонад", "Фрукты", "Основы"],
         imageUrl: coctails,
-        link: "/lemonades",
+        link: "/lemonades/fruit-flavored",
     },
     {
         id: 4,
@@ -42,7 +42,7 @@ const categories: Carousel3DItem[] = [
         description: "Простые правила для приятного отдыха",
         tags: ["Правила", "Уважение", "Комфорт"],
         imageUrl: paradise,
-        link: "/rules",
+        link: "/rules/command-guidelines",
     }
 ];
 
@@ -55,7 +55,7 @@ export default function Home() {
             if (isAuthenticated === 'true') {
                 navigate('/auth-page');
             } else {
-                navigate('/profile');
+                navigate('/profile/tab=settings');
             }
         }, 1600);
     };

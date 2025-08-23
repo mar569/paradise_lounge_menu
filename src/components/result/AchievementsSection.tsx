@@ -64,14 +64,14 @@ const AchievementsSection: React.FC<AchievementsSectionProps> = ({
                         <div
                             role="button"
                             tabIndex={0}
-                            onClick={() => navigate('/achievements')}
+                            onClick={() => navigate('/achievements-:userId')}
                             onKeyDown={(e) => {
                                 if (e.key === 'Enter' || e.key === ' ') {
                                     e.preventDefault();
-                                    navigate('/achievements');
+                                    navigate('/achievements-:userId');
                                 }
                             }}
-                            className="w-full max-w-[120px] cursor-pointer px-6 py-2 gradient-border rounded-lg text-white font-semibold hover:opacity-90 transition-opacity"
+                            className="gradient-border w-full max-w-[160px] cursor-pointer px-6 py-2  rounded-lg text-white font-semibold hover:opacity-90 transition-opacity flex items-center justify-center"
                         >
                             Смотреть
                         </div>

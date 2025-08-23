@@ -57,8 +57,8 @@ function App() {
 
 
   const isAuthPage = location.pathname === '/auth-page';
-  const isAdminDashboard = location.pathname === '/admin';
-  const isVisitsHistory = location.pathname === '/visits-history';
+  const isAdminDashboard = location.pathname === '/admin/tab=dashboard';
+  const isVisitsHistory = location.pathname === '/visits-history/this';
 
   return (
     <ErrorBoundary>
@@ -86,16 +86,16 @@ function App() {
                   </div>}>
                     <Routes>
                       <Route path="/" element={<Home />} />
-                      <Route path="/cocktails" element={<Cocktails />} />
-                      <Route path="/teas" element={<Tea />} />
-                      <Route path="/lemonades" element={<Lemonades />} />
-                      <Route path="/rules" element={<Rules />} />
-                      <Route path="/profile" element={<Profile />} />
+                      <Route path="/cocktails-page-:cocktail" element={<Cocktails />} />
+                      <Route path="/teas-slug-:tea" element={<Tea />} />
+                      <Route path="/lemonades/fruit-flavored" element={<Lemonades />} />
+                      <Route path="/rules/command-guidelines" element={<Rules />} />
+                      <Route path="/profile/tab=settings" element={<Profile />} />
                       <Route path="/not-auth" element={<NotAuth />} />
                       <Route path="/auth-page" element={<AuthPage />} />
-                      <Route path="/visits-history" element={<VisitsHistoryPage />} />
-                      <Route path="/achievements" element={user ? <AchievementsPage userId={user.uid} /> : <Navigate to="/auth-page" />} />
-                      <Route path="/admin" element={<PrivateRoute adminOnly={true} element={<AdminDashboard />} />} />
+                      <Route path="/visits-history/this" element={<VisitsHistoryPage />} />
+                      <Route path="/achievements-:userId" element={user ? <AchievementsPage userId={user.uid} /> : <Navigate to="/auth-page" />} />
+                      <Route path="/admin/tab=dashboard" element={<PrivateRoute adminOnly={true} element={<AdminDashboard />} />} />
                       <Route path="*" element={<NotFound />} />
                     </Routes>
                   </Suspense>

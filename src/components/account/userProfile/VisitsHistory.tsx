@@ -18,7 +18,7 @@ const VisitsHistory: React.FC<VisitsHistoryProps> = React.memo(({
     const navigate = useNavigate();
 
     const handleViewHistory = () => {
-        navigate('/visits-history', { state: { visitsHistory } });
+        navigate('/visits-history/this', { state: { visitsHistory } });
     };
 
     // Сортируем историю посещений по дате и времени в порядке убывания

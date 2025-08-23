@@ -182,7 +182,7 @@ const AchievementsPage: React.FC<AchievementsPageProps> = ({ userId }) => {
     if (loading) {
         return (
             <div className="min-h-screen bg-black flex items-center justify-center">
-                <div className="text-white">Загрузка...</div>
+                <div className="spinner"></div>
             </div>
         );
     }

@@ -44,7 +44,7 @@ const LoginForm: React.FC<LoginFormProps> = ({ onSwitchMode, onPasswordReset, on
                 if (userData.status === 'admin') {
                     navigate('/admin'); // Перенаправляем на админский интерфейс
                 } else {
-                    navigate('/auth-page'); // Перенаправляем на личный кабинет
+                    navigate('/auth-page-userId'); // Перенаправляем на личный кабинет
                 }
 
                 onLoginSuccess(); // Вызываем функцию при успешном входе
