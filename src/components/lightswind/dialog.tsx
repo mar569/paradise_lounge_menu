@@ -136,7 +136,7 @@ const DialogContent = React.forwardRef<HTMLDivElement, OmittedDialogContentHTMLA
                             exit={{ opacity: 0 }}
                             transition={{ duration: 0.2 }}
                             className="absolute inset-0 bg-background/80 backdrop-blur-sm"
-                            onClick={() => setOpen(false)} // Close dialog when clicking overlay
+                            onClick={() => setOpen(false)}
                         />
 
                         {/* Dialog Content */}
@@ -156,14 +156,14 @@ const DialogContent = React.forwardRef<HTMLDivElement, OmittedDialogContentHTMLA
                             {...(props as HTMLMotionProps<'div'>)}
                         >
                             {children}
-                            <button
+                            <span
                                 onClick={() => setOpen(false)}
                                 className="absolute right-4 top-4 rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:pointer-events-none"
                                 aria-label="Close dialog"
                             >
                                 <X className="h-7 w-7 mt-1 cursor-pointer text-[#f0fefb]" />
-                                <span className="sr-only">Close</span>
-                            </button>
+
+                            </span>
                         </motion.div>
                     </div>
                 )}

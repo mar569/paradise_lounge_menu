@@ -73,20 +73,24 @@ export default function Cocktails() {
                     </div>
                 </div>
 
-                <button
+                <div
                     onClick={() => setShowVideo(!showVideo)}
-                    className="ml-auto flex items-center "
+                    role="button"
+                    tabIndex={0}
+                    className="ml-auto flex items-center cursor-pointer"
+                    onKeyDown={(e) => {
+                        if (e.key === 'Enter' || e.key === ' ') {
+                            e.preventDefault();
+                            setShowVideo(!showVideo);
+                        }
+                    }}
                 >
                     {showVideo ? (
-                        <>
-                            <span className="mr-2 text-2xl"></span>
-                        </>
+                        <span className="mr-2 text-2xl"></span>
                     ) : (
-                        <>
-                            <span className="mr-2 text-4xl">✨</span>
-                        </>
+                        <span className="mr-2 text-4xl">✨</span>
                     )}
-                </button>
+                </div>
             </div>
 
             <AnimatePresence>
@@ -137,7 +141,7 @@ export default function Cocktails() {
             </AnimatePresence>
 
             <div className="mt-16">
-                <button
+                <span
                     onClick={() => navigate("/")}
                     className="absolute bottom-6 left-4 text-[#058c6f] cursor-pointer flex items-center hover:underline group z-20"
                 >
@@ -145,7 +149,7 @@ export default function Cocktails() {
                     <span className="relative z-10 text-[24px] ml-2"
                         style={{ fontFamily: 'Sofia', fontWeight: 'bold' }}>вернуться обратно</span>
                     <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-gray-500 transition-all duration-300 group-hover:w-full"></span>
-                </button>
+                </span>
             </div>
         </div >
     );

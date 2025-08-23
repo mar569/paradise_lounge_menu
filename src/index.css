@@ -17,16 +17,6 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-span {
-  font-family: 'monospace', cursive;
-}
-h1 {
-  font-family: 'Bad Script', cursive;
-}
-
-h2 {
-  font-family: 'monospace', cursive;
-}
 
 body {
   margin: 0;
@@ -147,6 +137,7 @@ body {
 .overlay {
   background: rgba(0, 0, 0, 0.7);
 }
+
 /* styles.css */
 .modal {
   background: white;
@@ -510,7 +501,7 @@ body {
 
 .gradient-border {
   position: relative;
-  border-radius: 1rem;
+  border-radius: 3px;
   background: transparent;
 
   &::before {

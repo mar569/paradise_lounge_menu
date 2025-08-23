@@ -152,7 +152,7 @@ const Carousel3D = ({
                           }
                         }}
                       >
-                        <span className="relative z-10 text-[18px]" style={{ fontFamily: "'Nunito', sans-serif" }}>Просмотреть</span>
+                        <span className="relative z-10 text-[18px] text-[#cef1ea] hover:text-[#058c6f]" style={{ fontFamily: "'Nunito', sans-serif" }}>Просмотреть</span>
                         <ArrowRight className="ml-2 w-4 h-4 relative z-10 transition-transform group-hover:translate-x-1" />
                         <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-[#058c6f] transition-all duration-300 group-hover:w-full"></span>
                       </Link>
@@ -165,26 +165,26 @@ const Carousel3D = ({
 
           {!isMobile && (
             <>
-              <button
+              <span
                 className="absolute left-6 top-1/2 -translate-y-1/2 w-8 h-8 bg-white/80 rounded-full flex items-center justify-center text-gray-500 hover:bg-white z-30 shadow-md transition-all hover:scale-110"
                 onClick={() => setActive((prev) => (prev - 1 + items.length) % items.length)}
                 aria-label="Previous"
               >
                 <ChevronLeft className="w-8 h-8 cursor-pointer" />
-              </button>
-              <button
+              </span>
+              <span
                 className="absolute right-6 top-1/2 -translate-y-1/2 w-8 h-8 bg-white/80 rounded-full flex items-center justify-center text-gray-500 hover:bg-white z-30 shadow-md transition-all hover:scale-110"
                 onClick={() => setActive((prev) => (prev + 1) % items.length)}
                 aria-label="Next"
               >
                 <ChevronRight className="w-8 h-8 cursor-pointer" />
-              </button>
+              </span>
             </>
           )}
 
           <div className="absolute bottom-0 left-0 right-0 flex justify-center items-center space-x-3 z-30">
             {items.map((_, idx) => (
-              <button
+              <span
                 key={idx}
                 className={`w-6 h-4 cursor-pointer rounded-full transition-all duration-300 ${active === idx ? "bg-[#7db39b] w-8" : "bg-gray-200 hover:bg-gray-300"}`}
                 onClick={() => setActive(idx)}

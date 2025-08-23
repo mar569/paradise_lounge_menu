@@ -30,21 +30,19 @@ const CashbackManagement: React.FC<CashbackManagementProps> = React.memo(({
     const handleDeductAmountChange = (value: string) => {
         const numericValue = value ? Number(value) : null;
 
-        // Prevent setting a negative deduction amount
         if (numericValue !== null && numericValue < 0) {
             return;
         }
 
-        // Ensure the deduction amount does not exceed the user's available cashback
         if (foundUser && numericValue !== null && numericValue > foundUser.cashback) {
-            return; // Optionally, you can show a toast or alert here
+            return;
         }
 
         setDeductAmount(numericValue);
     };
 
     return (
-        <div className="bg-transparent border-1 border-[#394d3e] p-4 rounded-lg">
+        <div className="bg-transparent border-2 border-[#87679b] p-4 rounded-lg">
             <h2 className="text-xl font-semibold text-white mb-4">Управление кэшбэком</h2>
 
             <div className="mb-4">
@@ -75,20 +73,41 @@ const CashbackManagement: React.FC<CashbackManagementProps> = React.memo(({
             </div>
 
             <div className="flex gap-4">
-                <button
+                {/* Первый элемент */}
+                <div
                     onClick={handleAddCashback}
-                    className="cursor-pointer w-full py-2 bg-[#379461] text-[#fff] rounded hover:bg-[#175530] disabled:opacity-50"
-                    disabled={!foundUser || orderAmount === null || calculatedCashback === 0}
+                    role="button"
+                    tabIndex={0}
+                    onKeyDown={(e) => {
+                        if (e.key === 'Enter' || e.key === ' ') {
+                            handleAddCashback();
+                        }
+                    }}
+                    className={`cursor-pointer w-full py-2 rounded flex justify-center items-center ${!foundUser || orderAmount === null || calculatedCashback === 0
+                        ? 'bg-[#379461] opacity-50 pointer-events-none'
+                        : 'bg-[#379461] hover:bg-[#175530]'
+                        } text-white transition duration-300`}
                 >
                     Начислить {calculatedCashback}₽
-                </button>
-                <button
+                </div>
+
+                {/* Второй элемент */}
+                <div
                     onClick={handleDeductCashback}
-                    className="cursor-pointer w-full py-2 bg-[#ab4040] text-[#fff] rounded hover:bg-[#cc2828] disabled:opacity-50"
-                    disabled={!foundUser || !deductAmount}
+                    role="button"
+                    tabIndex={0}
+                    onKeyDown={(e) => {
+                        if (e.key === 'Enter' || e.key === ' ') {
+                            handleDeductCashback();
+                        }
+                    }}
+                    className={`cursor-pointer w-full py-2 rounded flex justify-center items-center ${!foundUser || !deductAmount
+                        ? 'bg-[#ab4040] opacity-50 pointer-events-none'
+                        : 'bg-[#ab4040] hover:bg-[#cc2828]'
+                        } text-white transition duration-300`}
                 >
                     Списать баллы
-                </button>
+                </div>
             </div>
         </div>
     );

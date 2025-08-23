@@ -86,7 +86,7 @@ const LoginForm: React.FC<LoginFormProps> = ({ onSwitchMode, onPasswordReset, on
             </div>
             <div className="btn">
                 <button className="button_1" type="submit" disabled={isSubmitting}>
-                    {isSubmitting ? 'Загрузка...' : 'Войти'}
+                    {isSubmitting ? <div className='spinner_auth'></div> : 'Войти'}
                 </button>
                 <button className="button2" type="button" onClick={onSwitchMode} disabled={isSubmitting}>
                     Зарегистрироваться

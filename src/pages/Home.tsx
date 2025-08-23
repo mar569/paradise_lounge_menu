@@ -72,15 +72,26 @@ export default function Home() {
         <div className="relative overflow-hidden min-h-screen">
             <div className="container mx-auto px-4 py-14  relative z-10 min-h-screen">
                 <div className="text-center mb-8">
-                    <div className='absolute top-2 right-1'>
-                        <button
+                    <div className='absolute top-2 right-2'>
+                        <div
                             onClick={handleProfileClick}
-                            className="flex items-center justify-center p-2 bg-transparent rounded-full hover:bg-black transition cursor-pointer"
-                            style={{ transition: 'background-color 0.3s ease', boxShadow: '2px 2px 6px rgba(120, 170, 11, 0.2)' }}
+                            role="button"
+                            tabIndex={0}
                             aria-label="Профиль"
+                            className="flex items-center justify-center p-2 bg-transparent rounded-full hover:bg-black transition cursor-pointer"
+                            style={{
+                                transition: 'background-color 0.3s ease',
+                                boxShadow: '2px 2px 6px rgba(120, 170, 11, 0.2)',
+                            }}
+                            onKeyDown={(e) => {
+                                if (e.key === 'Enter' || e.key === ' ') {
+                                    e.preventDefault();
+                                    handleProfileClick();
+                                }
+                            }}
                         >
                             <User onClick={handleProfileClick} size={28} />
-                        </button>
+                        </div>
                     </div>
                     <h1 className="text-4xl md:text-5xl font-bold mb-2 pt-">
                         Добро пожаловать в <span className="text-[34px] md:text-[40px] text-[#c9f5f3]">Paradise Lounge!</span>

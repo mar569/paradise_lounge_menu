@@ -39,9 +39,9 @@ const CashbackLevel: React.FC<CashbackLevelProps> = React.memo(({
 
                 const spentMessage = remainingSpent > 0
                     ? (remainingSpent <= 0
-                        ? <span
+                        ? <span className='text-[16px]'
                             style={{ fontFamily: 'Poppins', fontWeight: 'bold' }}>сумма достигнута <FaCheck className="inline-block ml-1" /></span>
-                        : <span
+                        : <span className='text-[16px]'
                             style={{ fontFamily: 'Poppins', fontWeight: 'bold' }}>{remainingSpent}₽</span>)
                     : null;
 
@@ -66,24 +66,25 @@ const CashbackLevel: React.FC<CashbackLevelProps> = React.memo(({
             transition={{ duration: 0.5 }}
         >
             <h4 className="text-lg font-semibold text-center mb-2">
-                Уровень <span className="font-bold" style={{ color: '#76c7c0', fontFamily: 'monospace' }}>cashback:</span>
+                Уровень <span className="font-bold" style={{ color: '#3ceccc', fontFamily: 'monospace' }}>cashback:</span>
             </h4>
 
             <div className="relative">
                 <div className="flex justify-between mb-1">
-                    <span className="text-lg font-bold text-[#76c7c0]"
+                    <span className="text-lg font-bold text-[#3ceccc]"
                         style={{ fontFamily: 'Poppins', fontWeight: 'bold' }}>0%</span>
-                    <span className="text-lg font-bold text-[#76c7c0] ml-6"
+                    <span className="text-lg font-bold text-[#3ceccc] ml-6"
                         style={{ fontFamily: 'Poppins', fontWeight: 'bold' }}>3%</span>
-                    <span className="text-lg font-bold text-[#76c7c0]"
+                    <span className="text-lg font-bold text-[#3ceccc]"
                         style={{ fontFamily: 'Poppins', fontWeight: 'bold' }}>5%</span>
-                    <span className="text-lg font-bold text-[#76c7c0]"
+                    <span className="text-lg font-bold text-[#3ceccc]"
                         style={{ fontFamily: 'Poppins', fontWeight: 'bold' }}>10%</span>
                 </div>
 
-                <div className="h-4 bg-gray-300 rounded-full overflow-hidden relative">
+                <div className="h-4 rounded-full overflow-hidden relative"
+                    style={{ backgroundColor: '#fff' }}>
                     <div
-                        className="h-full bg-gradient-to-r from-[#76c791] to-[#138231] rounded-full"
+                        className="h-full bg-gradient-to-r from-[#01fc55] to-[#138231] rounded-full"
                         style={{
                             width: `${progressWidth}%`,
                             transition: 'width 1s ease-out',

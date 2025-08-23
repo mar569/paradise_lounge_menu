@@ -55,12 +55,12 @@ const AchievementsCard: React.FC<AchievementsCardProps> = ({
                 animate={{ scale: isOpen ? 1 : 0.9 }}
                 exit={{ scale: 0.9 }}
             >
-                <button
+                <span
                     onClick={onClose}
                     className="absolute top-4 right-4 text-gray-400 hover:text-gray-600"
                 >
                     <X size={24} />
-                </button>
+                </span>
 
                 <div className="text-center mb-6">
                     <img
@@ -69,7 +69,7 @@ const AchievementsCard: React.FC<AchievementsCardProps> = ({
                         className="object-cover"
                     />
 
-                    <p className="text-gray-600 mb-4">{achievement.description}</p>
+                    <p className="text-[#efe7fd] mb-4">{achievement.description}</p>
                 </div>
 
                 <div className="mb-6">
@@ -89,7 +89,8 @@ const AchievementsCard: React.FC<AchievementsCardProps> = ({
                 </div>
 
                 <div className="text-center mb-6">
-                    <p className="text-lg font-semibold text-[#875ed3]">
+                    <p className="text-lg font-semibold text-[#a473ff]"
+                        style={{ textShadow: '2px 2px 4px rgba(5, 136, 95, 0.5)' }}>
                         Награда: {achievement.reward} баллов
                     </p>
                 </div>

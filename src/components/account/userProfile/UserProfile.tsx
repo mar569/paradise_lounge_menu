@@ -225,15 +225,15 @@ const UserProfile: React.FC<UserProfileProps> = React.memo(({
             />
 
             <div className='absolute bottom-4 left-4  '>
-                <button
+                <span
                     onClick={() => navigate("/")}
-                    className="text-[#058c6f] cursor-pointer flex items-center hover:underline relative group"
+                    className="text-[#058c6f] btn-history cursor-pointer flex items-center hover:underline relative group"
                 >
                     <ArrowLeft className="w-5 h-5 relative z-10 transition-transform group-hover:translate-x-1" />
                     <span className="relative z-10 text-[24px] ml-2"
                         style={{ fontFamily: 'Sofia', fontWeight: 'bold' }}>на главную</span>
                     <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-gray-400 transition-all duration-300 group-hover:w-full"></span>
-                </button>
+                </span>
             </div>
         </div>
     );

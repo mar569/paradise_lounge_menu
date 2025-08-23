@@ -192,12 +192,12 @@ const AchievementsPage: React.FC<AchievementsPageProps> = ({ userId }) => {
             <div className="max-w-4xl mx-auto">
                 {/* Header */}
                 <div className="flex items-center mb-8">
-                    <button
+                    <span
                         onClick={() => navigate(-1)}
                         className="mr-4 text-[#76c7c0] hover:text-[#76c7c0]"
                     >
                         <ArrowLeft size={24} className='cursor-pointer' />
-                    </button>
+                    </span>
                     <h4 className="text-3xl">Мои достижения</h4>
                 </div>
 

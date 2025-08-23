@@ -134,9 +134,8 @@ const RegisterForm: React.FC<RegisterFormProps> = ({ onSwitchMode, onRegistratio
                 {/* Дата рождения с ограничениями */}
                 <div className="field">
                     <input
-                        type="date"
-                        placeholder="Дата рождения"
-                        className="w-full px-[12px] py-[2px] input-field"
+                        type='date'
+                        className="w-full px-[12px] py-[2px] input-field "
                         {...register('dateOfBirth')}
                         min={minDateStr}
                         max={maxDateStr}
@@ -196,16 +195,21 @@ const RegisterForm: React.FC<RegisterFormProps> = ({ onSwitchMode, onRegistratio
                         )}
                     </button>
                 </div>
-
-                {/* Переключение на вход */}
-                <button
-                    type="button"
+                <div
+                    role="button"
+                    tabIndex={0}
                     onClick={onSwitchMode}
-                    disabled={isLoading}
-                    className="w-full py-2 px-4 text-[#b9dfd8] rounded-md hover:underline disabled:opacity-50 cursor-pointer"
+                    onKeyDown={(e) => {
+                        if (e.key === 'Enter' || e.key === ' ') {
+                            e.preventDefault();
+                            onSwitchMode();
+                        }
+                    }}
+                    className={`w-full py-2 px-4 rounded-md cursor-pointer ${isLoading ? 'opacity-50 pointer-events-none' : 'text-[#b9dfd8] hover:underline'
+                        } flex justify-center items-center`}
                 >
-                    Есть аккаунт? <span style={{ fontFamily: 'Sofia', fontWeight: 'bold' }}>Войти</span>
-                </button>
+                    <span className='text-[18px]' style={{ fontFamily: 'Sofia', fontWeight: 'bold' }}>Есть аккаунт? Войти</span>
+                </div>
             </motion.form>
         </>
     );

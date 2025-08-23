@@ -108,12 +108,12 @@ const AccordionTrigger = React.forwardRef<HTMLButtonElement, AccordionTriggerPro
         };
 
         return (
-            <button
+            <span
                 ref={ref}
                 type="button"
                 className={cn(
                     `flex flex-1 items-center justify-between cursor-pointer py-4 font-medium transition-all hover:underline 
-          [&[data-state=open]>svg]:rotate-180`,
+          [&[data-state=open]>svg]:rotate-180 text-[#f6eded] dark:text-[#a3b1c6]`,
                     className
                 )}
                 onClick={handleToggle}
@@ -131,7 +131,7 @@ const AccordionTrigger = React.forwardRef<HTMLButtonElement, AccordionTriggerPro
                 >
                     <ChevronDown className="h-4 w-4" />
                 </motion.div>
-            </button>
+            </span>
         );
     }
 );
@@ -154,7 +154,7 @@ const AccordionContent = React.forwardRef<HTMLDivElement, AccordionContentProps>
         return (
             <motion.div
                 ref={ref}
-                className={cn("overflow-hidden text-sm transition-all duration-300 ease-in-out cursor-pointer", className)}
+                className={cn("overflow-hidden text-sm transition-all duration-300 ease-in-out cursor-pointer bg-black", className)}
                 initial={{ maxHeight: 0, opacity: 0 }} // Use maxHeight instead of height
                 animate={{ maxHeight: isOpen ? '1000px' : 0, opacity: isOpen ? 1 : 0 }} // Set a large enough maxHeight
                 exit={{ maxHeight: 0, opacity: 0 }}

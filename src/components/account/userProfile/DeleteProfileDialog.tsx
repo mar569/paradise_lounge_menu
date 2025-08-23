@@ -83,18 +83,35 @@ const DeleteProfileDialog: React.FC<DeleteProfileDialogProps> = ({ isOpen, setIs
                     Вы уверены, что хотите полностью удалить свой профиль? Все данные будут безвозвратно утеряны.
                 </DialogDescription>
                 <div className="flex justify-end gap-3">
-                    <button
+                    <div
                         onClick={() => setIsOpen(false)}
-                        className="cursor-pointer px-4 py-2 rounded-md border border-gray-300 hover:bg-gray-50"
+                        className="cursor-pointer px-4 py-2 border-1 border-[#bceedf] rounded-md shadow-sm focus:outline-none focus:ring-[#7eefb7] focus:border-[#7eefb7] text-[#ffffff] mt-2 flex items-center justify-center"
+                        role="button"
+                        tabIndex={0}
+                        onKeyDown={(e) => {
+                            if (e.key === 'Enter' || e.key === ' ') {
+                                e.preventDefault();
+                                setIsOpen(false);
+                            }
+                        }}
                     >
                         Отмена
-                    </button>
-                    <button
-                        onClick={handleDeleteProfile}
-                        className="cursor-pointer px-4 py-2 rounded-md bg-[#ba1d1d] text-white hover:bg-red-700"
+                    </div>
+
+                    <div
+                        onClick={() => handleDeleteProfile()}
+                        className="cursor-pointer px-4 py-2 border-1 border-[#bceedf] rounded-md shadow-sm focus:outline-none focus:ring-[#7eefb7] focus:border-[#7eefb7] text-[#f40b0b] mt-2 flex items-center justify-center"
+                        role="button"
+                        tabIndex={0}
+                        onKeyDown={(e) => {
+                            if (e.key === 'Enter' || e.key === ' ') {
+                                e.preventDefault();
+                                handleDeleteProfile();
+                            }
+                        }}
                     >
                         Удалить
-                    </button>
+                    </div>
                 </div>
             </DialogContent>
         </Dialog>

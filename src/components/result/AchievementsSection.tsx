@@ -23,11 +23,11 @@ const AchievementsSection: React.FC<AchievementsSectionProps> = ({
             transition={{ duration: 0.5 }}
         >
             <div className="flex items-center">
-                <CiAlignBottom size={24} className='mr-2 cursor-pointer text-[#fff]' />
-                <button onClick={() => setIsDetailsVisible(!isDetailsVisible)}
-                    className="text-md text-[#fff] cursor-pointer "
+                <CiAlignBottom size={24} className='mr-2  btn-history rounded-2xl cursor-pointer text-[#fff]' />
+                <span onClick={() => setIsDetailsVisible(!isDetailsVisible)}
+                    className="text-md text-[#fff] cursor-pointer btn-history "
                 >
-                    {isDetailsVisible ? "Скрыть достижения" : "Достижения"}</button>
+                    {isDetailsVisible ? "Скрыть достижения" : "Достижения"}</span>
             </div>
 
             {isDetailsVisible && (
@@ -39,7 +39,7 @@ const AchievementsSection: React.FC<AchievementsSectionProps> = ({
                     transition={{ duration: 0.9 }}
                     style={{ padding: '16px 0 16px 0' }}
                 >
-                    <div className="mt-4 border-1 border-[#7bc0a6] rounded-2xl "
+                    <div className="mt-4 border-2 border-[#7bc0a6] rounded-2xl "
                         style={{ padding: '16px 16px 16px 16px' }}>
                         <div className='mb-4'>
                             <p className="text-gray-300 text-[16px] ">
@@ -53,7 +53,7 @@ const AchievementsSection: React.FC<AchievementsSectionProps> = ({
                                 {Math.round((achievementsCount / totalAchievements) * 100)}%
                             </span>
                         </div>
-                        <div className="w-full bg-gray-300 rounded-full h-2 mb-4">
+                        <div className="w-full bg-[#ffffff] rounded-full h-2 mb-4">
                             <div
                                 className="bg-gradient-to-r from-[#76c7c0] to-[#875ed3] h-2 rounded-full transition-all duration-300"
                                 style={{
@@ -61,13 +61,19 @@ const AchievementsSection: React.FC<AchievementsSectionProps> = ({
                                 }}
                             />
                         </div>
-                        <div>
-                            <button
-                                onClick={() => navigate('/achievements')}
-                                className="cursor-pointer px-6 py-2 bg-[#4b817d] rounded-lg text-white font-semibold hover:opacity-90 transition-opacity"
-                            >
-                                Смотреть
-                            </button>
+                        <div
+                            role="button"
+                            tabIndex={0}
+                            onClick={() => navigate('/achievements')}
+                            onKeyDown={(e) => {
+                                if (e.key === 'Enter' || e.key === ' ') {
+                                    e.preventDefault();
+                                    navigate('/achievements');
+                                }
+                            }}
+                            className="w-full max-w-[120px] cursor-pointer px-6 py-2 gradient-border rounded-lg text-white font-semibold hover:opacity-90 transition-opacity"
+                        >
+                            Смотреть
                         </div>
                     </div>
                 </motion.div>

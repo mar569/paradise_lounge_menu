@@ -20,12 +20,19 @@ const LogoutButton: React.FC<LogoutButtonProps> = React.memo(() => {
 
     return (
         <footer className='flex justify-end'>
-            <button
+            <div
                 onClick={handleLogout}
+                role="button"
+                tabIndex={0}
+                onKeyDown={(e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        handleLogout();
+                    }
+                }}
                 className="cursor-pointer px-4 py-1.5 bg-transparent border-1 border-[#b7443c] text-white rounded hover:bg-red-700"
             >
                 Выйти
-            </button>
+            </div>
         </footer>
     );
 });

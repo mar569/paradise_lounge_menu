@@ -11,12 +11,12 @@ const NotFound: React.FC = () => {
                 <p className="text-gray-600 mb-6">
                     Извините, запрашиваемая страница не существует или была перемещена.
                 </p>
-                <button
+                <span
                     onClick={() => navigate('/')}
                     className="bg-[#344045] text-white py-2 px-6 rounded-md hover:bg-[#2c2c2c] transition-colors"
                 >
                     На главную
-                </button>
+                </span>
             </div>
         </div>
     );

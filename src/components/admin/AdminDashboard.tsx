@@ -344,14 +344,26 @@ const AdminDashboard: React.FC = () => {
                 />
                 <VisitManagement handleAddVisit={handleAddVisit} foundUser={foundUser} />
                 <LogoutButton onLogout={handleLogout} />
-                <button onClick={() => navigate("/")}
+                <div
+                    onClick={() => navigate("/")}
+                    role="button"
+                    tabIndex={0}
+                    onKeyDown={(e) => {
+                        if (e.key === 'Enter' || e.key === ' ') {
+                            navigate("/");
+                        }
+                    }}
                     className="absolute bottom-6 left-4 text-[#058c6f] cursor-pointer flex items-center hover:underline group z-20"
                 >
                     <ArrowLeft className="w-5 h-5 relative z-10 transition-transform group-hover:translate-x-1" />
-                    <span className="relative z-10 text-[24px] ml-2"
-                        style={{ fontFamily: 'Sofia', fontWeight: 'bold' }}>на главную</span>
+                    <span
+                        className="relative z-10 text-[24px] ml-2"
+                        style={{ fontFamily: 'Sofia', fontWeight: 'bold' }}
+                    >
+                        на главную
+                    </span>
                     <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-gray-500 transition-all duration-300 group-hover:w-full"></span>
-                </button>
+                </div>
             </div>
         </div>
     );

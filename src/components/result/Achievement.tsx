@@ -42,9 +42,9 @@ export const Achievement: React.FC<AchievementProps> = ({ achievement, onClick }
                         {achievement.progress}/{achievement.target}
                     </span>
                 </div>
-                <div className=" w-full bg-gray-300 rounded-full h-2">
+                <div className=" w-full bg-[#99fff6] rounded-full h-2">
                     <div
-                        className="bg-gradient-to-r from-[#76c7c0] to-[#875ed3] h-2 rounded-full transition-all duration-300"
+                        className="bg-gradient-to-r from-[#76c79e] to-[#803ff9] h-2 rounded-full transition-all duration-300"
                         style={{ width: `${Math.min((achievement.progress / achievement.target) * 100, 100)}%` }}
                     />
                 </div>
@@ -52,7 +52,7 @@ export const Achievement: React.FC<AchievementProps> = ({ achievement, onClick }
                 <div className="flex justify-between items-center mt-2">
 
                     {achievement.claimed && (
-                        <span className="text-green-400 text-sm">✅ Получено</span>
+                        <span className="text-green-400 text-[16px]">✅ Получено</span>
                     )}
                 </div>
             </div>

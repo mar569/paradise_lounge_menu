@@ -73,9 +73,9 @@ const ProfileHeader: React.FC<ProfileHeaderProps> = ({
             <h4 className="text-xl text-[#fff] font-semibold">Профиль</h4>
             <Dialog>
                 <DialogTrigger>
-                    <button className="flex items-center">
-                        <FaGear className="h-5 w-5 text-[#d7f5ec] cursor-pointer" />
-                    </button>
+                    <span className="flex items-center">
+                        <FaGear className="h-5 w-5 text-[#d7f5ec] cursor-pointer " />
+                    </span>
                 </DialogTrigger>
                 <DialogContent>
                     <DialogTitle className='text-[#fff] text-[20px] mb-4'
@@ -101,32 +101,57 @@ const ProfileHeader: React.FC<ProfileHeaderProps> = ({
                         </div>
                     </DialogDescription>
                     <div className="flex justify-end">
-                        <button
+                        <span
                             onClick={handleSave}
                             className="px-4 py-2 rounded-md text-white bg-transparent border-2 border-[#b4eaef] hover:bg-[#fff] hover:text-[#000] transition-colors"
                         >
                             Сохранить
-                        </button>
+                        </span>
                     </div>
                     <div className="mt-4">
-                        <button
+                        <div
                             onClick={() => onPasswordReset(userData?.email || '')}
-                            className="cursor-pointer w-full px-4 py-2 border-1 border-[#bceedf] rounded-md shadow-sm focus:outline-none focus:ring-[#7eefb7] focus:border-[#7eefb7] mt-2"
+                            className="cursor-pointer w-full px-4 py-2 border-1 border-[#bceedf] rounded-md shadow-sm focus:outline-none focus:ring-[#7eefb7] focus:border-[#7eefb7] mt-2 flex items-center justify-center"
+                            role="button"
+                            tabIndex={0}
+                            onKeyDown={(e) => {
+                                if (e.key === 'Enter' || e.key === ' ') {
+                                    e.preventDefault();
+                                    onPasswordReset(userData?.email || '');
+                                }
+                            }}
                         >
                             Сбросить пароль
-                        </button>
-                        <button
+                        </div>
+                        <div
                             onClick={onLogout}
-                            className="cursor-pointer w-full px-4 py-2 border-1 border-[#bceedf] rounded-md shadow-sm focus:outline-none focus:ring-[#7eefb7] focus:border-[#7eefb7] text-[#ed3434] mt-2"
+                            className="cursor-pointer w-full px-4 py-2 border-1 border-[#bceedf] rounded-md shadow-sm focus:outline-none focus:ring-[#7eefb7] focus:border-[#7eefb7] text-[#ed3434] mt-2 flex items-center justify-center"
+                            role="button"
+                            tabIndex={0}
+                            onKeyDown={(e) => {
+                                if (e.key === 'Enter' || e.key === ' ') {
+                                    e.preventDefault();
+                                    onLogout();
+                                }
+                            }}
                         >
                             Выйти
-                        </button>
-                        <button
+                        </div>
+
+                        <div
                             onClick={() => setIsDeleteDialogOpen(true)}
-                            className="cursor-pointer w-full px-4 py-2 border-1 border-[#bceedf] rounded-md shadow-sm focus:outline-none focus:ring-[#7eefb7] focus:border-[#7eefb7] text-[#f40b0b] mt-2"
+                            className="cursor-pointer w-full px-4 py-2 border-1 border-[#bceedf] rounded-md shadow-sm focus:outline-none focus:ring-[#7eefb7] focus:border-[#7eefb7] text-[#f40b0b] mt-2 flex items-center justify-center"
+                            role="button"
+                            tabIndex={0}
+                            onKeyDown={(e) => {
+                                if (e.key === 'Enter' || e.key === ' ') {
+                                    e.preventDefault();
+                                    setIsDeleteDialogOpen(true);
+                                }
+                            }}
                         >
                             Удалить профиль
-                        </button>
+                        </div>
                     </div>
                 </DialogContent>
             </Dialog>

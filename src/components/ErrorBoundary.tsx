@@ -50,9 +50,9 @@ class ErrorBoundary extends Component<Props, State> {
                 <div role="alert" className="error-boundary">
                     <h2 className='text-3xl'>{this.props.errorMessage || "Что-то пошло не так."}</h2>
                     <p>Пожалуйста, попробуйте обновить страницу или вернуться назад.</p>
-                    <button onClick={this.handleRetry} className="btn btn-primary" aria-label="Попробовать снова">
+                    <span onClick={this.handleRetry} className="btn btn-primary" aria-label="Попробовать снова">
                         Попробовать снова
-                    </button>
+                    </span>
                     {this.props.fallbackUI}
                     {process.env.NODE_ENV === 'development' && this.state.errorInfo && (
                         <details>

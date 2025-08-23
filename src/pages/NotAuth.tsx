@@ -70,29 +70,63 @@ const NotAuth: React.FC = () => {
             <div className="bg-transparent border-1 border-[#05885f] p-8 rounded-xl shadow-md text-center max-w-md">
                 <h4 className="text-2xl font-bold text-[#f52b2bc4] mb-4">Требуется подтверждение почты</h4>
                 <p className="text-[#ffffff] mb-6">
-                    Подтвердите свой email. Пожалуйста, проверьте вашу почту и перейдите по ссылке для подтверждения.
+                    Проверьте вашу почту и перейдите по ссылке для подтверждения. Если вы не получили письмо, убедитесь, что оно не попало в папку «Спам».
                 </p>
                 <div className="space-y-3">
-                    <button
+                    {/* Кнопка подтверждения почты */}
+                    <div
+                        role="button"
+                        tabIndex={0}
                         onClick={handleEmailVerification}
-                        className={`w-full cursor-pointer ${loading || verificationInProgress ? 'bg-transparent border-1 border-[#05885f]' : 'bg-[#016246]'} border-1 border-[#b1b2b1] text-[#fff] py-2 px-4 rounded-md hover:bg-green-700 transition-colors`}
-                        disabled={loading || verificationInProgress}
+                        onKeyDown={(e) => {
+                            if (e.key === 'Enter' || e.key === ' ') {
+                                handleEmailVerification();
+                            }
+                        }}
+                        aria-disabled={loading || verificationInProgress}
+                        className={`w-full cursor-pointer ${loading || verificationInProgress
+                            ? 'bg-transparent border border-[#05885f] cursor-not-allowed opacity-50'
+                            : 'bg-[#016246]'
+                            } border border-[#b1b2b1] text-white py-2 px-4 rounded-md transition-colors hover:bg-green-700 focus:outline-none`}
                     >
-                        {verificationInProgress ? <div className='spinner_auth'></div> : 'Я подтвердил(а) почту'}
-                    </button>
-                    <button
+                        {verificationInProgress ? (
+                            <div className="spinner_auth mx-auto"></div>
+                        ) : (
+                            'Я подтвердил(а) почту'
+                        )}
+                    </div>
+
+                    {/* Повторная отправка ссылки */}
+                    <div
+                        role="button"
+                        tabIndex={0}
                         onClick={handleResendVerification}
-                        className={`w-full cursor-pointer ${resendDisabled ? 'bg-[#016246]' : 'bg-[#015a7c]'} border-1 border-[#b1b2b1] text-[#fff] py-2 px-4 rounded-md hover:bg-blue-700 transition-colors`}
-                        disabled={resendDisabled}
+                        onKeyDown={(e) => {
+                            if (e.key === 'Enter' || e.key === ' ') {
+                                handleResendVerification();
+                            }
+                        }}
+                        aria-disabled={resendDisabled}
+                        className={`w-full cursor-pointer ${resendDisabled ? 'bg-[#016246] cursor-not-allowed' : 'bg-[#015a7c]'
+                            } border border-[#b1b2b1] text-white py-2 px-4 rounded-md transition-colors hover:bg-blue-700 focus:outline-none`}
                     >
                         Повторно отправить ссылку
-                    </button>
-                    <button
+                    </div>
+
+
+                    <div
+                        role="button"
+                        tabIndex={0}
                         onClick={() => navigate('/')}
-                        className="w-full cursor-pointer bg-[#017c65] border-1 border-[#b1b2b1] text-[#fff] py-2 px-4 rounded-md hover:bg-gray-300 transition-colors"
+                        onKeyDown={(e) => {
+                            if (e.key === 'Enter' || e.key === ' ') {
+                                navigate('/');
+                            }
+                        }}
+                        className="w-full cursor-pointer bg-[#017c65] border border-[#b1b2b1] text-white py-2 px-4 rounded-md transition-colors hover:bg-gray-300 focus:outline-none"
                     >
                         На главную
-                    </button>
+                    </div>
                 </div>
             </div>
         </motion.div>
@@ -100,3 +134,4 @@ const NotAuth: React.FC = () => {
 };
 
 export default NotAuth;
+// MNGFL9WX

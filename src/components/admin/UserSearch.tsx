@@ -12,7 +12,7 @@ interface UserSearchProps {
 
 const UserSearch: React.FC<UserSearchProps> = React.memo(({ userIdInput, setUserIdInput, onFindUser, foundUser }) => {
     return (
-        <div className="bg-transparent border-1 border-[#394d3e] p-4 rounded-lg">
+        <div className="bg-transparent border-2 border-[#3cb755] p-4 rounded-lg">
             <h4 className="text-xl font-semibold text-white mb-4">Поиск пользователя</h4>
             <div className="flex gap-2 mb-4">
                 <input
@@ -22,12 +22,19 @@ const UserSearch: React.FC<UserSearchProps> = React.memo(({ userIdInput, setUser
                     value={userIdInput}
                     onChange={(e) => setUserIdInput(e.target.value)}
                 />
-                <button
+                <div
                     onClick={onFindUser}
+                    role="button"
+                    tabIndex={0}
+                    onKeyDown={(e) => {
+                        if (e.key === 'Enter' || e.key === ' ') {
+                            onFindUser();
+                        }
+                    }}
                     className="px-4 py-2 bg-transparent border-1 border-[#3cb755] text-[#fff] rounded hover:bg-[#14502a] transition duration-300 ease-in-out cursor-pointer"
                 >
                     Найти
-                </button>
+                </div>
             </div>
             <UserInfo user={foundUser} />
         </div>

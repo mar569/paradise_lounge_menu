@@ -8,16 +8,23 @@ interface VisitManagementProps {
 
 const VisitManagement: React.FC<VisitManagementProps> = React.memo(({ handleAddVisit, foundUser }) => {
     return (
-        <div className="bg-transparent border-1 border-[#394d3e] p-4 rounded-lg">
+        <div className="bg-transparent border-2 border-[#87679b] p-4 rounded-lg">
             <h2 className="text-xl font-semibold text-white mb-4">Добавить посещение</h2>
-            <button
+            <div
                 onClick={handleAddVisit}
-                className="cursor-pointer w-full py-2 bg-[#379461] text-[#fff] rounded hover:bg-[#175530] disabled:opacity-50"
+                role="button"
+                tabIndex={0}
+                onKeyDown={(e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        handleAddVisit();
+                    }
+                }}
+                className={`cursor-pointer w-full py-2 rounded flex justify-center items-center ${!foundUser ? 'border-2 border-[#3cb755] opacity-50 pointer-events-none' : 'border-2 border-[#3cb755] hover:bg-[#175530] rounded-lg'
+                    } text-white text-lg transition duration-300`}
                 style={{ fontFamily: 'monospace', fontWeight: 'bold' }}
-                disabled={!foundUser}
             >
-                Добавить посещение
-            </button>
+                Добавить
+            </div>
         </div>
     );
 });

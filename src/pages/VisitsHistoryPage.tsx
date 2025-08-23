@@ -54,12 +54,12 @@ const VisitsHistoryPage: React.FC = () => {
     return (
         <div className="p-4 max-w-3xl mx-auto age-verification-bg">
             <div className="flex items-center mb-6">
-                <button
+                <span
                     onClick={() => navigate('/auth-page')}
                     className="mr-4 text-[#76c7c0] hover:text-[#76c7c0]"
                 >
                     <ArrowLeft onClick={() => navigate('/auth-page')} size={24} className='cursor-pointer' />
-                </button>
+                </span>
                 <h2 className="text-2xl text-[#fff] font-bold">История посещений</h2>
             </div>
 

@@ -8,18 +8,18 @@ const BonusProgram: React.FC = () => {
 
     return (
         <div>
-            <button
+            <span
                 onClick={() => setIsBonusAccordionOpen(!isBonusAccordionOpen)} // Переключение состояния аккордеона
                 className="mt-2 text-[#fff] cursor-pointer "
             >
-                <div className='flex items-center'>
+                <div className='flex items-center btn-history'>
                     <CiStar size={24} className='mr-2 cursor-pointer' />
                     {isBonusAccordionOpen ? "Скрыть бонусную программу" : "О бонусной программе"}
                 </div>
-            </button>
+            </span>
             {isBonusAccordionOpen && (
                 <motion.div
-                    className="mt-4 p-4 bg-black/80 rounded-md"
+                    className="mt-4 p-4 bg-black/60 rounded-xl"
                     initial={{ opacity: 0, height: 0 }} // Начальное состояние
                     animate={{ opacity: 1, height: 'auto' }} // Конечное состояние
                     exit={{ opacity: 0, height: 0 }} // Состояние при выходе
@@ -29,13 +29,13 @@ const BonusProgram: React.FC = () => {
                         <AccordionItem value="bonus1">
                             <AccordionTrigger>Что такое бонусная программа</AccordionTrigger>
                             <AccordionContent>
-                                <p className='text-[#fff]'>Бонусная программа предоставляет возможность получать баллы за каждую покупку. Накопленные баллы можно оплатить до 10% от всей суммы покупки.</p>
+                                <p className='text-[#fff] text-[16px]'>Бонусная программа предоставляет возможность получать баллы за каждую покупку. Накопленные баллы можно оплатить до 10% от всей суммы покупки.</p>
                             </AccordionContent>
                         </AccordionItem>
                         <AccordionItem value="bonus2">
                             <AccordionTrigger>Как работает кэшбэк?</AccordionTrigger>
                             <AccordionContent>
-                                <p className='text-[#fff]'>За каждое посещение и заказ в "Paradise Lounge" вы накапливаете баллы.</p>
+                                <p className='text-[#d5ffe7]'>За каждое посещение и заказ в "Paradise Lounge" вы накапливаете баллы.</p>
                             </AccordionContent>
                         </AccordionItem>
                         <AccordionItem value="bonus3">

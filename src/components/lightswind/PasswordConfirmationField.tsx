@@ -36,29 +36,43 @@ export const PasswordConfirmationField: React.FC<PasswordConfirmationFieldProps>
             />
 
             {showVisibilityToggle && (
-                <button
-                    type="button"
+                <div
+                    role="button"
+                    tabIndex={0}
                     onClick={handleToggleVisibility}
-                    className="absolute right-10 top-1/2 -translate-y-1/2 text-gray-500 hover:text-gray-700 transition-colors"
+                    onKeyDown={(e) => {
+                        if (e.key === 'Enter' || e.key === ' ') {
+                            e.preventDefault();
+                            handleToggleVisibility();
+                        }
+                    }}
+                    className="absolute right-10 top-1/2 -translate-y-1/2 text-gray-500 hover:text-gray-700 transition-colors cursor-pointer"
                     aria-label={showPassword ? "Скрыть пароль" : "Показать пароль"}
                 >
                     {showPassword ? (
-                        <EyeOff className="h-5 w-5 cursor-pointer" />
+                        <EyeOff className="h-5 w-5" />
                     ) : (
-                        <Eye className="h-5 w-5 cursor-pointer" />
+                        <Eye className="h-5 w-5" />
                     )}
-                </button>
+                </div>
             )}
 
             {value && (
-                <button
-                    type="button"
+                <div
+                    role="button"
+                    tabIndex={0}
                     onClick={handleClear}
+                    onKeyDown={(e) => {
+                        if (e.key === 'Enter' || e.key === ' ') {
+                            e.preventDefault();
+                            handleClear();
+                        }
+                    }}
                     className="absolute right-2 top-1/2 -translate-y-1/2 text-gray-500 hover:text-gray-700 transition-colors cursor-pointer"
                     aria-label="Удалить пароль"
                 >
                     <X className="h-5 w-5" />
-                </button>
+                </div>
             )}
         </div>
     );
