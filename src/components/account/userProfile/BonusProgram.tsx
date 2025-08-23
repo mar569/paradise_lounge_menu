@@ -10,7 +10,7 @@ const BonusProgram: React.FC = () => {
         <div>
             <span
                 onClick={() => setIsBonusAccordionOpen(!isBonusAccordionOpen)} // Переключение состояния аккордеона
-                className="mt-2 text-[#fff] cursor-pointer "
+                className="mt-4 text-[#fff] cursor-pointer "
             >
                 <div className='flex items-center btn-history'>
                     <CiStar size={24} className='mr-2 cursor-pointer' />

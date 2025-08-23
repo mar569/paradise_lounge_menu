@@ -17,7 +17,7 @@ const AchievementsSection: React.FC<AchievementsSectionProps> = ({
 
     return (
         <motion.div
-            className="mt-6 bg-transparent rounded-2xl"
+            className="mt-2 bg-transparent rounded-2xl"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
@@ -32,7 +32,7 @@ const AchievementsSection: React.FC<AchievementsSectionProps> = ({
 
             {isDetailsVisible && (
                 <motion.div
-                    className="mt-4  bg-black/80 rounded-md"
+                    className="mt-2  bg-black/80 rounded-md"
                     initial={{ opacity: 0, height: 0 }}
                     animate={{ opacity: 1, height: 'auto' }}
                     exit={{ opacity: 0, height: 0 }}
