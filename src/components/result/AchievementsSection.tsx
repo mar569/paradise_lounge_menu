@@ -71,7 +71,7 @@ const AchievementsSection: React.FC<AchievementsSectionProps> = ({
                                     navigate('/achievements-:userId');
                                 }
                             }}
-                            className="gradient-border w-full max-w-[160px] cursor-pointer px-6 py-2  rounded-lg text-white font-semibold hover:opacity-90 transition-opacity flex items-center justify-center"
+                            className="gradient-border-see w-full max-w-[160px] cursor-pointer px-6 py-2  rounded-lg text-white font-semibold hover:opacity-90 transition-opacity flex items-center justify-center"
                         >
                             Смотреть
                         </div>
