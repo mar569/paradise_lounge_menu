@@ -17,29 +17,29 @@ const AchievementsSection: React.FC<AchievementsSectionProps> = ({
 
     return (
         <motion.div
-            className="mt-2 bg-transparent rounded-2xl"
+            className=" bg-transparent rounded-2xl ml-1"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
         >
             <div className="flex items-center">
-                <CiAlignBottom size={24} className='mr-2  btn-history rounded-2xl cursor-pointer text-[#fff]' />
+                <CiAlignBottom size={24} className='mr-2  rounded-2xl cursor-pointer text-[#fff]' />
                 <span onClick={() => setIsDetailsVisible(!isDetailsVisible)}
-                    className="text-md text-[#fff] cursor-pointer btn-history "
+                    className="text-md text-[#fff] cursor-pointer   "
                 >
                     {isDetailsVisible ? "Скрыть достижения" : "Достижения"}</span>
             </div>
 
             {isDetailsVisible && (
                 <motion.div
-                    className="mt-2  bg-black/80 rounded-md"
+                    className="  bg-black/80 rounded-md"
                     initial={{ opacity: 0, height: 0 }}
                     animate={{ opacity: 1, height: 'auto' }}
-                    exit={{ opacity: 0, height: 0 }}
-                    transition={{ duration: 0.9 }}
+                    exit={{ opacity: 0, height: 0, transition: { duration: 0.3 } }}
+                    transition={{ duration: 0.9, ease: 'easeInOut' }}
                     style={{ padding: '16px 0 16px 0' }}
                 >
-                    <div className="mt-4 border-2 border-[#7bc0a6] rounded-2xl "
+                    <div className=" border-2 border-[#7bc0a6] rounded-2xl "
                         style={{ padding: '16px 16px 16px 16px' }}>
                         <div className='mb-4'>
                             <p className="text-gray-300 text-[16px] ">

@@ -7,9 +7,9 @@ const BonusProgram: React.FC = () => {
     const [isBonusAccordionOpen, setIsBonusAccordionOpen] = useState(false);
 
     return (
-        <div>
+        <div className='flex flex-col ml-1'>
             <span
-                onClick={() => setIsBonusAccordionOpen(!isBonusAccordionOpen)} // Переключение состояния аккордеона
+                onClick={() => setIsBonusAccordionOpen(!isBonusAccordionOpen)}
                 className="mt-4 text-[#fff] cursor-pointer "
             >
                 <div className='flex items-center btn-history'>
@@ -20,9 +20,9 @@ const BonusProgram: React.FC = () => {
             {isBonusAccordionOpen && (
                 <motion.div
                     className="mt-4 p-4 bg-black/60 rounded-xl"
-                    initial={{ opacity: 0, height: 0 }} // Начальное состояние
-                    animate={{ opacity: 1, height: 'auto' }} // Конечное состояние
-                    exit={{ opacity: 0, height: 0 }} // Состояние при выходе
+                    initial={{ opacity: 0, height: 0 }}
+                    animate={{ opacity: 1, height: 'auto' }}
+                    exit={{ opacity: 0, height: 0 }}
                     transition={{ duration: 0.9 }}
                 >
                     <Accordion>
@@ -35,7 +35,7 @@ const BonusProgram: React.FC = () => {
                         <AccordionItem value="bonus2">
                             <AccordionTrigger>Как работает кэшбэк?</AccordionTrigger>
                             <AccordionContent>
-                                <p className='text-[#d5ffe7]'>За каждое посещение и заказ в "Paradise Lounge" вы накапливаете баллы.</p>
+                                <p className='text-[#fff]'>За каждое посещение и заказ в "Paradise Lounge" вы накапливаете баллы.</p>
                             </AccordionContent>
                         </AccordionItem>
                         <AccordionItem value="bonus3">

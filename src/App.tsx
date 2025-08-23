@@ -57,7 +57,7 @@ function App() {
 
 
   const isAuthPage = location.pathname === '/auth-page';
-  const isAdminDashboard = location.pathname === '/admin/tab=dashboard';
+  const isAdminDashboard = location.pathname === '/admin';
   const isVisitsHistory = location.pathname === '/visits-history/this';
 
   return (
@@ -95,7 +95,7 @@ function App() {
                       <Route path="/auth-page" element={<AuthPage />} />
                       <Route path="/visits-history/this" element={<VisitsHistoryPage />} />
                       <Route path="/achievements-:userId" element={user ? <AchievementsPage userId={user.uid} /> : <Navigate to="/auth-page" />} />
-                      <Route path="/admin/tab=dashboard" element={<PrivateRoute adminOnly={true} element={<AdminDashboard />} />} />
+                      <Route path="/admin" element={<PrivateRoute adminOnly={true} element={<AdminDashboard />} />} />
                       <Route path="*" element={<NotFound />} />
                     </Routes>
                   </Suspense>

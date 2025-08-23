@@ -557,6 +557,32 @@ body {
     pointer-events: none;
   }
 }
+
+.gradient-border_yes {
+  position: relative;
+  border-radius: 1rem;
+  background: transparent;
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 1rem;
+    padding: 2px;
+    background: radial-gradient(
+      circle at 35.86% 50%,
+      #57b73c 0%,
+      #058824 48.96%,
+      #05d7ad 100%
+    );
+    -webkit-mask: linear-gradient(#000000f7 0 0) content-box,
+      linear-gradient(#000000 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+  }
+}
+
 .place {
   background: linear-gradient(
       270.75deg,

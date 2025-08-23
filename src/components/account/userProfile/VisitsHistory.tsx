@@ -8,12 +8,14 @@ interface VisitsHistoryProps {
     visitsHistory: VisitData[];
     cashback: number;
     calculateCashbackPercentage: (visits: number) => number;
+    onAddVisit?: () => void; // Добавляем опциональный пропс для добавления посещения
 }
 
 const VisitsHistory: React.FC<VisitsHistoryProps> = React.memo(({
     visitsHistory,
     cashback,
-    calculateCashbackPercentage
+    calculateCashbackPercentage,
+
 }) => {
     const navigate = useNavigate();
 
@@ -28,7 +30,7 @@ const VisitsHistory: React.FC<VisitsHistoryProps> = React.memo(({
 
     return (
         <motion.div
-            className="mt-4 flex flex-col gradient-border  "
+            className="mt-4 flex flex-col gradient-border"
             initial={{ x: 100, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
             exit={{ x: 100, opacity: 0 }}
@@ -45,11 +47,11 @@ const VisitsHistory: React.FC<VisitsHistoryProps> = React.memo(({
                 <div className="mt-4 flex justify-between items-end border-2 border-[#7bc0a6] rounded-2xl px-2 py-3">
                     <div>
                         <div className='flex items-end'>
-                            <span onClick={handleViewHistory} className="cursor-pointer  text-[16px] sm:text-lg md:text-xl font-semibold "
+                            <span onClick={handleViewHistory} className="cursor-pointer text-[16px] sm:text-lg md:text-xl font-semibold"
                                 style={{ padding: '0 10px 0 10px', fontFamily: 'monospace' }}>
                                 История посещений:
                             </span>
-                            <TbMapPinCheck onClick={handleViewHistory} className='cursor-pointer absolute bottom-4 right-4 text-[#76c7c0]' size={22} />
+                            <TbMapPinCheck onClick={handleViewHistory} className='cursor-pointer absolute bottom-5 right-5 text-[#76c7c0]' size={22} />
                         </div>
                         <ul className="mt-2 text-[#d1cfcf]">
                             {sortedVisitsHistory.length > 0 ? (

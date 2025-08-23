@@ -57,7 +57,7 @@ export default function Home() {
             } else {
                 navigate('/profile/tab=settings');
             }
-        }, 1600);
+        }, 1100);
     };
 
     useEffect(() => {

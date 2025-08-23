@@ -1,5 +1,3 @@
-// src/components/admin/types.ts
-// types.ts
 export interface User {
   id: string;
   userId: string;
@@ -8,5 +6,6 @@ export interface User {
   cashback: number;
   visits: number;
   status: 'admin' | 'active' | 'inactive' | 'pending';
-  totalSpent: number; // Убедитесь, что это свойство присутствует
+  totalSpent: number;
+  firstVisitDate?: Date;
 }

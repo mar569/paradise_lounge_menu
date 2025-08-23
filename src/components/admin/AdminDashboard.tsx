@@ -153,6 +153,10 @@ const AdminDashboard: React.FC = () => {
             // Проверяем достижения
             await checkAchievements(foundUser.id, foundUser.visits + 1); // Передаем новое количество посещений
 
+            // Обновляем уровень кешбека
+            const newCashbackPercentage = calculateCashbackPercentage(foundUser);
+            setCalculatedCashback(newCashbackPercentage);
+
             toast.success(`Кэшбек начислен пользователю ${foundUser.name}`);
             // Очищаем поля
             setOrderAmount(null);
@@ -165,7 +169,6 @@ const AdminDashboard: React.FC = () => {
             toast.error(`Ошибка начисления: ${errorMessage}`);
         }
     }, [foundUser, orderAmount, calculatedCashback]);
-
 
     const handleDeductCashback = useCallback(async () => {
         if (!foundUser || !deductAmount) return;
@@ -197,6 +200,10 @@ const AdminDashboard: React.FC = () => {
                 visits: prev.visits + 1
             } : null);
 
+            // Обновляем уровень кешбека
+            const newCashbackPercentage = calculateCashbackPercentage(foundUser);
+            setCalculatedCashback(newCashbackPercentage);
+
             toast.success(`Баллы списаны у пользователя ${foundUser.name}`);
             // Очищаем поля
             setDeductAmount(null);
@@ -208,7 +215,6 @@ const AdminDashboard: React.FC = () => {
             toast.error(`Ошибка списания: ${errorMessage}`);
         }
     }, [foundUser, deductAmount, orderAmount]);
-
 
     const handleAddVisit = useCallback(async () => {
         if (!foundUser) return;

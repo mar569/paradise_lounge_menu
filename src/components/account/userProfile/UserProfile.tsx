@@ -208,7 +208,7 @@ const UserProfile: React.FC<UserProfileProps> = React.memo(({
                 visitsHistory={visitsHistory}
                 cashback={userData?.cashback || 0}
                 calculateCashbackPercentage={(visits: number) => {
-                    if (visits < 4) return 0;
+                    if (visits <= 3) return 0;
                     if (visits >= 50 && totalSpent > 50000) return 10;
                     if (visits >= 20 && totalSpent > 20000) return 5;
                     if (visits >= 4 && totalSpent > 4000) return 3;

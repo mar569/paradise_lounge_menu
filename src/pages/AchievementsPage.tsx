@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { collection, query, where, getDocs, updateDoc, doc, increment, addDoc } from 'firebase/firestore';
+import { collection, query, where, getDocs, updateDoc, doc, increment, addDoc, getDoc } from 'firebase/firestore';
 import { ArrowLeft } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
@@ -83,7 +83,7 @@ const AchievementsPage: React.FC<AchievementsPageProps> = ({ userId }) => {
                     title: 'Дымный разряд',
                     description: '15 посещений за текущий месяц',
                     image: status_4,
-                    progress: Math.min(calculateMonthlyVisits(visitsData), 15), // Используем функцию для расчета прогресса
+                    progress: Math.min(calculateMonthlyVisits(visitsData), 15),
                     target: 15,
                     reward: 300,
                     claimed: false,
@@ -102,6 +102,9 @@ const AchievementsPage: React.FC<AchievementsPageProps> = ({ userId }) => {
                 }
             });
 
+            // Проверка достижения "Дымный разряд"
+            await checkSmokyDischargeAchievement(userId, visitsData);
+
             setAchievements(achievementsData);
         } catch (error) {
             console.error('Ошибка загрузки достижений:', error);
@@ -119,6 +122,58 @@ const AchievementsPage: React.FC<AchievementsPageProps> = ({ userId }) => {
             const visitDate = new Date(visit.timestamp.seconds * 1000);
             return visitDate.getMonth() === currentMonth && visitDate.getFullYear() === currentYear;
         }).length;
+    };
+
+    const checkSmokyDischargeAchievement = async (userId: string, visitsData: VisitData[]) => {
+        const monthlyVisits = calculateMonthlyVisits(visitsData);
+        const currentMonth = new Date().getMonth();
+        const currentYear = new Date().getFullYear();
+
+        // Получаем дату первого посещения
+        const userDoc = await getDoc(doc(db, 'users', userId));
+        const userData = userDoc.data() as { firstVisitDate?: Date };
+        const firstVisitDate = userData.firstVisitDate ? new Date(userData.firstVisitDate) : null;
+
+        if (monthlyVisits >= 15) {
+            await addAchievement(userId, 'Дымный разряд', 'Посетите заведение 15 раз за месяц', 300);
+        } else if (firstVisitDate && firstVisitDate.getMonth() === currentMonth && firstVisitDate.getFullYear() === currentYear) {
+            // Сброс достижения, если не достигнуто 15 посещений
+            await resetAchievement(userId, 'Дымный разряд');
+        }
+    };
+
+    const addAchievement = async (userId: string, title: string, description: string, rewardPoints: number) => {
+        try {
+            const achievementsRef = collection(db, 'achievements');
+            await addDoc(achievementsRef, {
+                userId,
+                title,
+                description,
+                rewardPoints,
+                claimed: false,
+                progress: 0,
+                target: 1,
+                image: 'path/to/image'
+            });
+        } catch (error) {
+            console.error('Ошибка добавления достижения:', error);
+        }
+    };
+
+    const resetAchievement = async (userId: string, title: string) => {
+        try {
+            const achievementsRef = collection(db, 'achievements');
+            const q = query(achievementsRef, where('userId', '==', userId), where('title', '==', title));
+            const snapshot = await getDocs(q);
+            snapshot.forEach(async (doc) => {
+                await updateDoc(doc.ref, {
+                    claimed: false,
+                    progress: 0
+                });
+            });
+        } catch (error) {
+            console.error('Ошибка сброса достижения:', error);
+        }
     };
 
     const handleCardOpen = (achievement: Achievement) => {
@@ -147,10 +202,10 @@ const AchievementsPage: React.FC<AchievementsPageProps> = ({ userId }) => {
             await addDoc(collection(db, 'visits'), {
                 userId,
                 timestamp: new Date(),
-                cashback: achievement.reward, // Добавляем награду как кэшбек
-                orderAmount: 0, // Указываем 0, так как это не обычное посещение
+                cashback: achievement.reward,
+                orderAmount: 0,
                 cafeName: "Paradise Lounge Bonus",
-                isDeduction: false // Указываем, что это не списание
+                isDeduction: false
             });
 
             // Сохраняем достижение как полученное
@@ -177,7 +232,6 @@ const AchievementsPage: React.FC<AchievementsPageProps> = ({ userId }) => {
             toast.error('Ошибка получения награды');
         }
     };
-
 
     if (loading) {
         return (

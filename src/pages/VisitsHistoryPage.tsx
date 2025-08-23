@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { ArrowLeft } from 'lucide-react';
-import { IoArrowUp } from 'react-icons/io5'; // Импортируем иконку стрелки вверх
+import { IoArrowUp } from 'react-icons/io5';
 import type { VisitData } from '../components/account/userProfile/types';
 
 const VisitsHistoryPage: React.FC = () => {
