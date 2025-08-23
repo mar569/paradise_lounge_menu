@@ -37,7 +37,7 @@ const ProfileDetails: React.FC<ProfileDetailsProps> = ({ userData }) => {
                     </DialogTrigger>
                     <DialogContent>
                         <DialogDescription>
-                            <p className="text-gray-100 pl-2 text-[2rem] leading-relaxed tracking-widest">{userData?.userId}</p>
+                            <p className="text-gray-100 pl-2 text-[2.5rem] leading-relaxed tracking-widest">{userData?.userId}</p>
                         </DialogDescription>
                     </DialogContent>
                 </Dialog>
