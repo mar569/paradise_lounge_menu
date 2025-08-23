@@ -95,7 +95,7 @@ const CashbackLevel: React.FC<CashbackLevelProps> = React.memo(({
                         style={{
                             left: starPosition,
                             top: '-5px',
-                            transform: 'translateX(-50%)',
+                            transform: 'translateX(-60%)',
                             color: '#FFD700',
                             fontSize: '1.6rem',
                             filter: 'drop-shadow(0 0 2px rgba(0,0,0,0.5))'
