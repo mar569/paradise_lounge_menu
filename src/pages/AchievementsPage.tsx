@@ -129,7 +129,7 @@ const AchievementsPage: React.FC<AchievementsPageProps> = ({ userId }) => {
         const currentMonth = new Date().getMonth();
         const currentYear = new Date().getFullYear();
 
-        // Получаем дату первого посещения
+
         const userDoc = await getDoc(doc(db, 'users', userId));
         const userData = userDoc.data() as { firstVisitDate?: Date };
         const firstVisitDate = userData.firstVisitDate ? new Date(userData.firstVisitDate) : null;
@@ -137,7 +137,6 @@ const AchievementsPage: React.FC<AchievementsPageProps> = ({ userId }) => {
         if (monthlyVisits >= 15) {
             await addAchievement(userId, 'Дымный разряд', 'Посетите заведение 15 раз за месяц', 300);
         } else if (firstVisitDate && firstVisitDate.getMonth() === currentMonth && firstVisitDate.getFullYear() === currentYear) {
-            // Сброс достижения, если не достигнуто 15 посещений
             await resetAchievement(userId, 'Дымный разряд');
         }
     };

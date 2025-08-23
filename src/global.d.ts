@@ -1,8 +1,7 @@
 declare global {
   interface Window {
-    recaptchaVerifier: RecaptchaVerifier; // Указываем точный тип
+    recaptchaVerifier: RecaptchaVerifier;
   }
 }
 
-// Убедитесь, что файл является модулем
 export {};

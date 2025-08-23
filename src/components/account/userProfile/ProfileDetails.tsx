@@ -1,7 +1,8 @@
-// src/components/userProfile/ProfileDetails.tsx
+
 import React from 'react';
 import type { UserData } from './types';
 import logo from '../../../assets/paradiseLogo.jpg';
+import { Dialog, DialogContent, DialogDescription, DialogTrigger } from '../../lightswind/dialog';
 
 interface ProfileDetailsProps {
     userData: UserData | null;
@@ -30,7 +31,16 @@ const ProfileDetails: React.FC<ProfileDetailsProps> = ({ userData }) => {
                 <h2 className="text-xl text-[#fff] font-semibold"
                     style={{ fontFamily: 'Sofia', fontWeight: 'bold' }}>{userData?.name}</h2>
                 <p className="text-gray-500 mt-1">{userData?.email}</p>
-                <p className="text-gray-500">ID: {userData?.userId}</p>
+                <Dialog>
+                    <DialogTrigger>
+                        <p className="text-gray-500 cursor-pointer ">ID: {userData?.userId}</p>
+                    </DialogTrigger>
+                    <DialogContent>
+                        <DialogDescription>
+                            <p className="text-gray-100 pl-2 text-[2rem] leading-relaxed tracking-widest">{userData?.userId}</p>
+                        </DialogDescription>
+                    </DialogContent>
+                </Dialog>
             </div>
         </div>
     );
