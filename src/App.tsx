@@ -39,6 +39,7 @@ function App() {
   }, []);
 
   useEffect(() => {
+
     const ageVerified = localStorage.getItem('ageVerified');
     if (ageVerified === 'true') {
       setIsAgeVerified(true);

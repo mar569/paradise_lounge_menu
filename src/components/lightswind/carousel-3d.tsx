@@ -182,7 +182,7 @@ const Carousel3D = ({
             </>
           )}
 
-          <div className="absolute bottom-0 left-0 right-0 flex justify-center items-center space-x-3 z-30">
+          <div className="absolute bottom-4 left-0 right-0 flex justify-center items-center space-x-3 z-30">
             {items.map((_, idx) => (
               <span
                 key={idx}

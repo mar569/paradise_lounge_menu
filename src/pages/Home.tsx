@@ -60,7 +60,7 @@ export default function Home() {
 
     return (
         <div className="relative overflow-hidden min-h-screen">
-            <div className="container mx-auto px-4 py-14  relative z-10 min-h-screen">
+            <div className="container mx-auto px-4 py-6 relative z-10 min-h-screen">
                 <div className="text-center mb-8">
                     <div className='absolute top-2 right-2 hidden md:block'>
                         <div
