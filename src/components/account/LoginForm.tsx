@@ -34,20 +34,20 @@ const LoginForm: React.FC<LoginFormProps> = ({ onSwitchMode, onPasswordReset, on
             if (userDoc.exists()) {
                 const userData = userDoc.data();
                 if (!userData.emailVerified) {
-                    navigate('/not-auth'); // Redirect to NotAuth page if email is not verified
+                    navigate('/not-auth');
                     return;
                 }
                 localStorage.setItem('isAuthenticated', 'true');
-                sessionStorage.setItem('isAuthenticated', 'true'); // Сохраняем состояние в sessionStorage
+                sessionStorage.setItem('isAuthenticated', 'true');
 
-                // Проверяем, является ли пользователь администратором
+
                 if (userData.status === 'admin') {
-                    navigate('/admin'); // Перенаправляем на админский интерфейс
+                    navigate('/admin');
                 } else {
-                    navigate('/auth-page'); // Перенаправляем на личный кабинет
+                    navigate('/auth-page');
                 }
 
-                onLoginSuccess(); // Вызываем функцию при успешном входе
+                onLoginSuccess();
             } else {
                 alert('Пользователь не найден.');
             }

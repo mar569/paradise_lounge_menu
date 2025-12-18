@@ -8,7 +8,7 @@ import ShaderBackground from './components/lightswind/shadedBackground';
 import ErrorBoundary from './components/ErrorBoundary';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth } from './services/firebase';
-import AgeVerificationPage from './pages/AgeVerificationPage'; // Import the new page
+import AgeVerificationPage from './pages/AgeVerificationPage';
 
 const Home = lazy(() => import('./pages/Home'));
 const Lemonades = lazy(() => import('./pages/Lemonades'));
@@ -28,7 +28,7 @@ function App() {
   const [loading, setLoading] = useState(true);
   const [user] = useAuthState(auth);
   const [isAgeVerified, setIsAgeVerified] = useState<boolean>(false);
-  const location = useLocation(); // Получаем текущий путь
+  const location = useLocation();
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -39,7 +39,6 @@ function App() {
   }, []);
 
   useEffect(() => {
-    // Проверяем, было ли подтверждено возраст ранее
     const ageVerified = localStorage.getItem('ageVerified');
     if (ageVerified === 'true') {
       setIsAgeVerified(true);

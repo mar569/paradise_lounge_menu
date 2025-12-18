@@ -1,11 +1,14 @@
+import React from 'react'
+import MobileBottomNav from './MobileBottomNav';
 
 export default function PageLayout({ children }: { children: React.ReactNode }) {
     return (
         <>
-            <main className="relative min-h-screen ">
-                {children}
+            <div className="relative min-h-screen flex flex-col">
 
-            </main>
+                <main className="flex-1">{children}</main>
+                <MobileBottomNav />
+            </div>
         </>
-    )
+    );
 }

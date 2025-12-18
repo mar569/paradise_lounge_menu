@@ -183,10 +183,10 @@ body {
 .form {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 12px;
   padding-left: 2em;
   padding-right: 2em;
-  padding-bottom: 0.4em;
+  padding-bottom: 0.6em;
   background-color: transparent;
   border-radius: 25px;
   box-shadow: inset 2px 1px 20px rgb(70, 109, 101),
@@ -206,7 +206,32 @@ body {
       transparent 100%
     );
   position: relative;
+  font-size: 16px;
+  transition: all 0.3s ease;
 }
+
+@media (min-width: 480px) {
+  .form {
+    gap: 8px;
+
+    font-size: 17px;
+  }
+}
+
+@media (min-width: 768px) {
+  .form {
+    gap: 10px;
+    font-size: 18px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .form {
+    gap: 12px;
+    font-size: 19px;
+  }
+}
+
 .form::before,
 .form::after {
   content: '';

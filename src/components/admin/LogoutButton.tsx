@@ -8,11 +8,11 @@ interface LogoutButtonProps {
 }
 
 const LogoutButton: React.FC<LogoutButtonProps> = React.memo(() => {
-    const navigate = useNavigate(); // Инициализация useNavigate
+    const navigate = useNavigate();
     const handleLogout = useCallback(async () => {
         try {
             await signOut(auth);
-            navigate('/', { replace: true }); // Добавьте { replace: true } чтобы заменить текущий URL
+            navigate('/', { replace: true });
         } catch (error) {
             console.error('Ошибка при выходе:', error);
         }

@@ -1,6 +1,6 @@
-import { useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { User } from 'lucide-react'; // Импортируем иконку профиля
+import { User } from 'lucide-react';
+
 import Carousel3D, { type Carousel3DItem } from '../components/lightswind/carousel-3d';
 import hookah from '../assets/hookah.png';
 import tea from '../assets/tea.png';
@@ -48,31 +48,21 @@ const categories: Carousel3DItem[] = [
 
 export default function Home() {
     const navigate = useNavigate();
-    const timeoutRef = useRef<NodeJS.Timeout | null>(null);
+
     const handleProfileClick = () => {
         const isAuthenticated = localStorage.getItem('isAuthenticated');
-        timeoutRef.current = setTimeout(() => {
-            if (isAuthenticated === 'true') {
-                navigate('/auth-page');
-            } else {
-                navigate('/profile/tab=settings');
-            }
-        }, 1100);
+        if (isAuthenticated === 'true') {
+            navigate('/auth-page');
+        } else {
+            navigate('/profile/tab=settings');
+        }
     };
-
-    useEffect(() => {
-        return () => {
-            if (timeoutRef.current) {
-                clearTimeout(timeoutRef.current);
-            }
-        };
-    }, []);
 
     return (
         <div className="relative overflow-hidden min-h-screen">
             <div className="container mx-auto px-4 py-14  relative z-10 min-h-screen">
                 <div className="text-center mb-8">
-                    <div className='absolute top-2 right-2'>
+                    <div className='absolute top-2 right-2 hidden md:block'>
                         <div
                             onClick={handleProfileClick}
                             role="button"

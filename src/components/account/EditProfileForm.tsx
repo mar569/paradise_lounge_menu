@@ -16,8 +16,8 @@ const EditProfileForm: React.FC<{ currentName: string; onEditProfile: (newName: 
 
         setLoading(true);
         try {
-            await onEditProfile(newName); // Предполагается, что onEditProfile возвращает промис
-            onClose(); // Закрываем форму после успешного обновления
+            await onEditProfile(newName);
+            onClose();
         } catch (err) {
             setError('Ошибка при обновлении имени: ' + (err as Error).message);
         } finally {
